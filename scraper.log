@@ -1,0 +1,1202 @@
+2026-04-13 14:56:27,127 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 14:56:27,128 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 14:56:27,146 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 14:56:27,151 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 14:56:27,152 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 14:56:27,162 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 14:56:27,164 - __main__ - INFO - Generated 50 queries
+2026-04-13 14:56:27,165 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 14:56:27,165 - __main__ - INFO - Organized into 5 batches
+2026-04-13 14:56:27,166 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 14:56:27,166 - __main__ - INFO - Processing batch 1/5
+2026-04-13 14:56:27,167 - __main__ - INFO - Scraping: Estate Agent in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 14:56:27,313 - __main__ - INFO - Scraping: Estate Agent in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 14:56:27,313 - __main__ - INFO - Scraping: Estate Agent in Alimosho, Lagos, Nigeria
+2026-04-13 14:56:27,314 - __main__ - INFO - Scraping: Estate Agent in Apapa, Lagos, Nigeria
+2026-04-13 14:56:27,314 - __main__ - INFO - Scraping: Estate Agent in Badagry, Lagos, Nigeria
+2026-04-13 14:56:27,314 - __main__ - INFO - Scraping: Estate Agent in Bwari, Abuja, Nigeria
+2026-04-13 14:56:27,314 - __main__ - INFO - Scraping: Estate Agent in Dala, Kano, Nigeria
+2026-04-13 14:56:27,316 - __main__ - INFO - Scraping: Estate Agent in Enugu East, Enugu, Nigeria
+2026-04-13 14:56:27,316 - __main__ - INFO - Scraping: Estate Agent in Enugu North, Enugu, Nigeria
+2026-04-13 14:56:27,317 - __main__ - INFO - Scraping: Estate Agent in Enugu South, Enugu, Nigeria
+2026-04-13 14:56:28,953 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,512 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,513 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,623 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,641 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,670 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,671 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,749 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,750 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:29,857 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:34,863 - __main__ - INFO - Processing batch 2/5
+2026-04-13 14:56:34,864 - __main__ - INFO - Scraping: Estate Agent in Epe, Lagos, Nigeria
+2026-04-13 14:56:34,865 - __main__ - INFO - Scraping: Estate Agent in Gwagwalada, Abuja, Nigeria
+2026-04-13 14:56:34,865 - __main__ - INFO - Scraping: Estate Agent in Gwale, Kano, Nigeria
+2026-04-13 14:56:34,866 - __main__ - INFO - Scraping: Estate Agent in Kano Municipal, Kano, Nigeria
+2026-04-13 14:56:34,867 - __main__ - INFO - Scraping: Estate Agent in Kuje, Abuja, Nigeria
+2026-04-13 14:56:34,867 - __main__ - INFO - Scraping: Estate Agent in Kumbotso, Kano, Nigeria
+2026-04-13 14:56:34,868 - __main__ - INFO - Scraping: Estate Agent in Kwali, Abuja, Nigeria
+2026-04-13 14:56:34,868 - __main__ - INFO - Scraping: Estate Agent in Nassarawa, Kano, Nigeria
+2026-04-13 14:56:34,869 - __main__ - INFO - Scraping: Estate Agent in Nkanu East, Enugu, Nigeria
+2026-04-13 14:56:34,870 - __main__ - INFO - Scraping: Estate Agent in Nkanu West, Enugu, Nigeria
+2026-04-13 14:56:35,843 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,171 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,230 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,576 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,578 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,628 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,642 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,663 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,699 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:36,742 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:41,747 - __main__ - INFO - Processing batch 3/5
+2026-04-13 14:56:41,748 - __main__ - INFO - Scraping: Exam Prep Tutor in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 14:56:41,749 - __main__ - INFO - Scraping: Exam Prep Tutor in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 14:56:41,749 - __main__ - INFO - Scraping: Exam Prep Tutor in Alimosho, Lagos, Nigeria
+2026-04-13 14:56:41,750 - __main__ - INFO - Scraping: Exam Prep Tutor in Apapa, Lagos, Nigeria
+2026-04-13 14:56:41,751 - __main__ - INFO - Scraping: Exam Prep Tutor in Badagry, Lagos, Nigeria
+2026-04-13 14:56:41,751 - __main__ - INFO - Scraping: Exam Prep Tutor in Bwari, Abuja, Nigeria
+2026-04-13 14:56:41,752 - __main__ - INFO - Scraping: Exam Prep Tutor in Epe, Lagos, Nigeria
+2026-04-13 14:56:41,752 - __main__ - INFO - Scraping: Exam Prep Tutor in Gwagwalada, Abuja, Nigeria
+2026-04-13 14:56:41,753 - __main__ - INFO - Scraping: Exam Prep Tutor in Kuje, Abuja, Nigeria
+2026-04-13 14:56:41,754 - __main__ - INFO - Scraping: Exam Prep Tutor in Kwali, Abuja, Nigeria
+2026-04-13 14:56:42,961 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,254 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,312 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,448 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,473 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,571 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,605 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,607 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,621 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:43,633 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:48,638 - __main__ - INFO - Processing batch 4/5
+2026-04-13 14:56:48,639 - __main__ - INFO - Scraping: Social Media Manager in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 14:56:48,640 - __main__ - INFO - Scraping: Social Media Manager in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 14:56:48,641 - __main__ - INFO - Scraping: Social Media Manager in Alimosho, Lagos, Nigeria
+2026-04-13 14:56:48,643 - __main__ - INFO - Scraping: Social Media Manager in Apapa, Lagos, Nigeria
+2026-04-13 14:56:48,645 - __main__ - INFO - Scraping: Social Media Manager in Badagry, Lagos, Nigeria
+2026-04-13 14:56:48,646 - __main__ - INFO - Scraping: Social Media Manager in Bwari, Abuja, Nigeria
+2026-04-13 14:56:48,647 - __main__ - INFO - Scraping: Social Media Manager in Dala, Kano, Nigeria
+2026-04-13 14:56:48,647 - __main__ - INFO - Scraping: Social Media Manager in Enugu East, Enugu, Nigeria
+2026-04-13 14:56:48,648 - __main__ - INFO - Scraping: Social Media Manager in Enugu North, Enugu, Nigeria
+2026-04-13 14:56:48,649 - __main__ - INFO - Scraping: Social Media Manager in Enugu South, Enugu, Nigeria
+2026-04-13 14:56:50,126 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,138 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,145 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,360 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,573 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,585 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,597 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,694 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,759 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:50,780 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:55,785 - __main__ - INFO - Processing batch 5/5
+2026-04-13 14:56:55,786 - __main__ - INFO - Scraping: Social Media Manager in Epe, Lagos, Nigeria
+2026-04-13 14:56:55,787 - __main__ - INFO - Scraping: Social Media Manager in Gwagwalada, Abuja, Nigeria
+2026-04-13 14:56:55,789 - __main__ - INFO - Scraping: Social Media Manager in Gwale, Kano, Nigeria
+2026-04-13 14:56:55,790 - __main__ - INFO - Scraping: Social Media Manager in Kano Municipal, Kano, Nigeria
+2026-04-13 14:56:55,791 - __main__ - INFO - Scraping: Social Media Manager in Kuje, Abuja, Nigeria
+2026-04-13 14:56:55,792 - __main__ - INFO - Scraping: Social Media Manager in Kumbotso, Kano, Nigeria
+2026-04-13 14:56:55,793 - __main__ - INFO - Scraping: Social Media Manager in Kwali, Abuja, Nigeria
+2026-04-13 14:56:55,794 - __main__ - INFO - Scraping: Social Media Manager in Nassarawa, Kano, Nigeria
+2026-04-13 14:56:55,794 - __main__ - INFO - Scraping: Social Media Manager in Nkanu East, Enugu, Nigeria
+2026-04-13 14:56:55,795 - __main__ - INFO - Scraping: Social Media Manager in Nkanu West, Enugu, Nigeria
+2026-04-13 14:56:57,027 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,303 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,425 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,722 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,734 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,751 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,769 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,772 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,781 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:56:57,832 - scrapers.base_scraper - ERROR - Google Maps search error: Executable doesn't exist at /home/gamp/.cache/ms-playwright/chromium-1091/chrome-linux/chrome
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+2026-04-13 14:57:02,837 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 14:57:02,837 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 14:57:02,838 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 14:57:02,838 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 14:57:02,838 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 14:57:02,838 - __main__ - WARNING - No results to save
+2026-04-13 14:57:02,839 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 14:57:02,839 - __main__ - INFO - Report saved: data/report_20260413_145702.txt
+2026-04-13 14:57:02,839 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:00:38,907 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:00:38,908 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:00:38,919 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:00:38,923 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:00:38,924 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:00:38,930 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:00:38,931 - __main__ - INFO - Generated 50 queries
+2026-04-13 15:00:38,932 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:00:38,933 - __main__ - INFO - Organized into 5 batches
+2026-04-13 15:00:38,933 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:00:38,933 - __main__ - INFO - Processing batch 1/5
+2026-04-13 15:00:38,935 - __main__ - INFO - Scraping: Cybersecurity Consultant in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 15:00:39,128 - __main__ - INFO - Scraping: Cybersecurity Consultant in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 15:00:39,129 - __main__ - INFO - Scraping: Cybersecurity Consultant in Alimosho, Lagos, Nigeria
+2026-04-13 15:00:39,131 - __main__ - INFO - Scraping: Cybersecurity Consultant in Apapa, Lagos, Nigeria
+2026-04-13 15:00:39,132 - __main__ - INFO - Scraping: Cybersecurity Consultant in Badagry, Lagos, Nigeria
+2026-04-13 15:00:39,133 - __main__ - INFO - Scraping: Cybersecurity Consultant in Bwari, Abuja, Nigeria
+2026-04-13 15:00:39,134 - __main__ - INFO - Scraping: Cybersecurity Consultant in Dala, Kano, Nigeria
+2026-04-13 15:00:39,136 - __main__ - INFO - Scraping: Cybersecurity Consultant in Enugu East, Enugu, Nigeria
+2026-04-13 15:00:39,137 - __main__ - INFO - Scraping: Cybersecurity Consultant in Enugu North, Enugu, Nigeria
+2026-04-13 15:00:39,138 - __main__ - INFO - Scraping: Cybersecurity Consultant in Enugu South, Enugu, Nigeria
+2026-04-13 15:01:02,139 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:04,160 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:04,231 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:04,251 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:04,426 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:04,625 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:05,122 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:05,446 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:05,946 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:06,727 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:11,733 - __main__ - INFO - Processing batch 2/5
+2026-04-13 15:01:11,734 - __main__ - INFO - Scraping: Cybersecurity Consultant in Epe, Lagos, Nigeria
+2026-04-13 15:01:11,735 - __main__ - INFO - Scraping: Cybersecurity Consultant in Gwagwalada, Abuja, Nigeria
+2026-04-13 15:01:11,736 - __main__ - INFO - Scraping: Cybersecurity Consultant in Gwale, Kano, Nigeria
+2026-04-13 15:01:11,737 - __main__ - INFO - Scraping: Cybersecurity Consultant in Kano Municipal, Kano, Nigeria
+2026-04-13 15:01:11,737 - __main__ - INFO - Scraping: Cybersecurity Consultant in Kuje, Abuja, Nigeria
+2026-04-13 15:01:11,738 - __main__ - INFO - Scraping: Cybersecurity Consultant in Kumbotso, Kano, Nigeria
+2026-04-13 15:01:11,739 - __main__ - INFO - Scraping: Cybersecurity Consultant in Kwali, Abuja, Nigeria
+2026-04-13 15:01:11,739 - __main__ - INFO - Scraping: Cybersecurity Consultant in Nassarawa, Kano, Nigeria
+2026-04-13 15:01:11,740 - __main__ - INFO - Scraping: Cybersecurity Consultant in Nkanu East, Enugu, Nigeria
+2026-04-13 15:01:11,741 - __main__ - INFO - Scraping: Cybersecurity Consultant in Nkanu West, Enugu, Nigeria
+2026-04-13 15:01:31,700 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:32,216 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:32,592 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:32,618 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:32,963 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:32,996 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:33,633 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:33,764 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:34,090 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:34,352 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:01:39,358 - __main__ - INFO - Processing batch 3/5
+2026-04-13 15:01:39,359 - __main__ - INFO - Scraping: Musician in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 15:01:39,360 - __main__ - INFO - Scraping: Musician in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 15:01:39,361 - __main__ - INFO - Scraping: Musician in Alimosho, Lagos, Nigeria
+2026-04-13 15:01:39,361 - __main__ - INFO - Scraping: Musician in Apapa, Lagos, Nigeria
+2026-04-13 15:01:39,362 - __main__ - INFO - Scraping: Musician in Badagry, Lagos, Nigeria
+2026-04-13 15:01:39,363 - __main__ - INFO - Scraping: Musician in Bwari, Abuja, Nigeria
+2026-04-13 15:01:39,363 - __main__ - INFO - Scraping: Musician in Epe, Lagos, Nigeria
+2026-04-13 15:01:39,364 - __main__ - INFO - Scraping: Musician in Gwagwalada, Abuja, Nigeria
+2026-04-13 15:01:39,366 - __main__ - INFO - Scraping: Musician in Kuje, Abuja, Nigeria
+2026-04-13 15:01:39,366 - __main__ - INFO - Scraping: Musician in Kwali, Abuja, Nigeria
+2026-04-13 15:01:59,025 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:00,268 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:00,292 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:00,645 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:01,390 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:01,454 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:01,465 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:01,534 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:01,539 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:02,173 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:07,178 - __main__ - INFO - Processing batch 4/5
+2026-04-13 15:02:07,178 - __main__ - INFO - Scraping: Plumber in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 15:02:07,179 - __main__ - INFO - Scraping: Plumber in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 15:02:07,179 - __main__ - INFO - Scraping: Plumber in Alimosho, Lagos, Nigeria
+2026-04-13 15:02:07,179 - __main__ - INFO - Scraping: Plumber in Apapa, Lagos, Nigeria
+2026-04-13 15:02:07,180 - __main__ - INFO - Scraping: Plumber in Badagry, Lagos, Nigeria
+2026-04-13 15:02:07,180 - __main__ - INFO - Scraping: Plumber in Bwari, Abuja, Nigeria
+2026-04-13 15:02:07,180 - __main__ - INFO - Scraping: Plumber in Dala, Kano, Nigeria
+2026-04-13 15:02:07,181 - __main__ - INFO - Scraping: Plumber in Enugu East, Enugu, Nigeria
+2026-04-13 15:02:07,181 - __main__ - INFO - Scraping: Plumber in Enugu North, Enugu, Nigeria
+2026-04-13 15:02:07,181 - __main__ - INFO - Scraping: Plumber in Enugu South, Enugu, Nigeria
+2026-04-13 15:02:27,589 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:27,816 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:27,912 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:28,322 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:28,391 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:28,587 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:29,910 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:29,978 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:31,099 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:31,146 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:36,151 - __main__ - INFO - Processing batch 5/5
+2026-04-13 15:02:36,152 - __main__ - INFO - Scraping: Plumber in Epe, Lagos, Nigeria
+2026-04-13 15:02:36,152 - __main__ - INFO - Scraping: Plumber in Gwagwalada, Abuja, Nigeria
+2026-04-13 15:02:36,153 - __main__ - INFO - Scraping: Plumber in Gwale, Kano, Nigeria
+2026-04-13 15:02:36,154 - __main__ - INFO - Scraping: Plumber in Kano Municipal, Kano, Nigeria
+2026-04-13 15:02:36,154 - __main__ - INFO - Scraping: Plumber in Kuje, Abuja, Nigeria
+2026-04-13 15:02:36,155 - __main__ - INFO - Scraping: Plumber in Kumbotso, Kano, Nigeria
+2026-04-13 15:02:36,156 - __main__ - INFO - Scraping: Plumber in Kwali, Abuja, Nigeria
+2026-04-13 15:02:36,156 - __main__ - INFO - Scraping: Plumber in Nassarawa, Kano, Nigeria
+2026-04-13 15:02:36,157 - __main__ - INFO - Scraping: Plumber in Nkanu East, Enugu, Nigeria
+2026-04-13 15:02:36,157 - __main__ - INFO - Scraping: Plumber in Nkanu West, Enugu, Nigeria
+2026-04-13 15:02:55,464 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:55,879 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:56,026 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:56,966 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:57,053 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:57,097 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:57,814 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:58,123 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:02:58,194 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:23,414 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:03:23,415 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:03:23,430 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:03:23,435 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:03:23,435 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:03:23,444 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:03:23,445 - __main__ - INFO - Generated 50 queries
+2026-04-13 15:03:23,446 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:03:23,446 - __main__ - INFO - Organized into 5 batches
+2026-04-13 15:03:23,446 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:03:23,447 - __main__ - INFO - Processing batch 1/5
+2026-04-13 15:03:23,447 - __main__ - INFO - Scraping: Electrician in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 15:03:23,621 - __main__ - INFO - Scraping: Electrician in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 15:03:23,621 - __main__ - INFO - Scraping: Electrician in Alimosho, Lagos, Nigeria
+2026-04-13 15:03:23,622 - __main__ - INFO - Scraping: Electrician in Apapa, Lagos, Nigeria
+2026-04-13 15:03:23,622 - __main__ - INFO - Scraping: Electrician in Badagry, Lagos, Nigeria
+2026-04-13 15:03:23,622 - __main__ - INFO - Scraping: Electrician in Bwari, Abuja, Nigeria
+2026-04-13 15:03:23,623 - __main__ - INFO - Scraping: Electrician in Epe, Lagos, Nigeria
+2026-04-13 15:03:23,623 - __main__ - INFO - Scraping: Electrician in Gwagwalada, Abuja, Nigeria
+2026-04-13 15:03:23,624 - __main__ - INFO - Scraping: Electrician in Kuje, Abuja, Nigeria
+2026-04-13 15:03:23,624 - __main__ - INFO - Scraping: Electrician in Kwali, Abuja, Nigeria
+2026-04-13 15:03:41,942 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:42,437 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:44,128 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:45,398 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:45,767 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:45,903 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:45,912 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:46,289 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:46,378 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:03:47,345 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:07:51,655 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:07:51,655 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:07:51,664 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:07:51,668 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:07:51,668 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:07:51,675 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:07:51,680 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:07:51,683 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:07:51,683 - __main__ - INFO - Generated 24 total queries (test mode)
+2026-04-13 15:07:51,685 - __main__ - INFO - Generated 24 queries
+2026-04-13 15:07:51,685 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:07:51,686 - __main__ - INFO - Organized into 3 batches
+2026-04-13 15:07:51,686 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:07:51,686 - __main__ - INFO - Processing batch 1/3
+2026-04-13 15:07:51,687 - __main__ - INFO - Scraping: Home & Maintenance Abuja
+2026-04-13 15:07:51,808 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:07:51,809 - __main__ - INFO - Scraping: Videographer Abuja Nigeria contact
+2026-04-13 15:07:51,810 - __main__ - INFO - Scraping: Videographer Lagos Nigeria contact
+2026-04-13 15:07:51,810 - __main__ - INFO - Scraping: Videographer in Abuja Municipal Area Council, Abuja, Nigeria
+2026-04-13 15:07:51,811 - __main__ - INFO - Scraping: Videographer in Ajeromi-Ifelodun, Lagos, Nigeria
+2026-04-13 15:07:51,812 - __main__ - INFO - Scraping: Videographer in Alimosho, Lagos, Nigeria
+2026-04-13 15:07:51,813 - __main__ - INFO - Scraping: Videographer in Apapa, Lagos, Nigeria
+2026-04-13 15:07:51,814 - __main__ - INFO - Scraping: Videographer in Badagry, Lagos, Nigeria
+2026-04-13 15:07:51,815 - __main__ - INFO - Scraping: Videographer in Bwari, Abuja, Nigeria
+2026-04-13 15:08:12,372 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:12,401 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:12,444 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:12,591 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:12,923 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:14,260 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:19,270 - __main__ - INFO - Processing batch 2/3
+2026-04-13 15:08:19,272 - __main__ - INFO - Scraping: Videographer in Dala, Kano, Nigeria
+2026-04-13 15:08:19,274 - __main__ - INFO - Scraping: Videographer in Enugu East, Enugu, Nigeria
+2026-04-13 15:08:19,276 - __main__ - INFO - Scraping: Videographer in Enugu North, Enugu, Nigeria
+2026-04-13 15:08:19,277 - __main__ - INFO - Scraping: Videographer in Enugu South, Enugu, Nigeria
+2026-04-13 15:08:19,279 - __main__ - INFO - Scraping: Videographer in Epe, Lagos, Nigeria
+2026-04-13 15:08:19,280 - __main__ - INFO - Scraping: Videographer in Gwagwalada, Abuja, Nigeria
+2026-04-13 15:08:19,282 - __main__ - INFO - Scraping: Videographer in Gwale, Kano, Nigeria
+2026-04-13 15:08:19,282 - __main__ - INFO - Scraping: Videographer in Kano Municipal, Kano, Nigeria
+2026-04-13 15:08:19,286 - __main__ - INFO - Scraping: Videographer in Kuje, Abuja, Nigeria
+2026-04-13 15:08:19,288 - __main__ - INFO - Scraping: Videographer in Kumbotso, Kano, Nigeria
+2026-04-13 15:08:39,957 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:39,991 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:40,341 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:40,679 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:40,733 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:41,449 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:41,627 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:42,971 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:44,353 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:44,783 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:08:49,789 - __main__ - INFO - Processing batch 3/3
+2026-04-13 15:08:49,790 - __main__ - INFO - Scraping: Videographer in Kwali, Abuja, Nigeria
+2026-04-13 15:08:49,791 - __main__ - INFO - Scraping: Videographer in Nassarawa, Kano, Nigeria
+2026-04-13 15:08:49,792 - __main__ - INFO - Scraping: Videographer in Nkanu East, Enugu, Nigeria
+2026-04-13 15:08:49,792 - __main__ - INFO - Scraping: Videographer in Nkanu West, Enugu, Nigeria
+2026-04-13 15:09:07,575 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:09:08,623 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:09:09,013 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:09:09,021 - scrapers.base_scraper - ERROR - Google Maps search error: Timeout 10000ms exceeded.
+2026-04-13 15:09:14,026 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:09:14,028 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:09:14,030 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:09:14,030 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:09:14,031 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:09:14,031 - __main__ - WARNING - No results to save
+2026-04-13 15:09:14,031 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:09:14,035 - __main__ - INFO - Report saved: data/report_20260413_150914.txt
+2026-04-13 15:09:14,046 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:10:04,812 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:10:04,812 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:10:04,824 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:10:04,827 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:10:04,828 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:10:04,832 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:10:04,834 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:10:04,835 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:10:04,836 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:10:04,836 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:10:04,837 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:10:04,837 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:10:04,837 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:10:04,838 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:10:04,959 - __main__ - INFO - Scraping: Videographer Lagos Nigeria contact
+2026-04-13 15:10:25,072 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:10:25,072 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:10:25,073 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:10:25,073 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:10:25,073 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:10:25,074 - __main__ - WARNING - No results to save
+2026-04-13 15:10:25,074 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:10:25,075 - __main__ - INFO - Report saved: data/report_20260413_151025.txt
+2026-04-13 15:10:25,076 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:13:20,242 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:13:20,242 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:13:20,245 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:13:20,247 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:13:20,248 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:13:20,249 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:13:20,250 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:13:20,250 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:13:20,251 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:13:20,251 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:13:20,251 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:13:20,251 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:13:20,251 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:13:20,251 - __main__ - INFO - Scraping: Cake Baker Lagos Nigeria contact
+2026-04-13 15:13:21,671 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:13:31,435 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:13:31,436 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:13:31,436 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:13:31,437 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:13:31,437 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:13:31,438 - __main__ - WARNING - No results to save
+2026-04-13 15:13:31,438 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:13:31,439 - __main__ - INFO - Report saved: data/report_20260413_151331.txt
+2026-04-13 15:13:31,440 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:13:50,243 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:13:50,243 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:13:50,256 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:13:50,260 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:13:50,261 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:13:50,269 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:13:50,273 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:13:50,273 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:13:50,274 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:13:50,275 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:13:50,275 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:13:50,276 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:13:50,276 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:13:50,277 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:13:50,536 - __main__ - INFO - Scraping: Pet Groomer Lagos Nigeria contact
+2026-04-13 15:13:59,345 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:13:59,346 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:13:59,347 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:13:59,347 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:13:59,348 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:13:59,348 - __main__ - WARNING - No results to save
+2026-04-13 15:13:59,349 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:13:59,350 - __main__ - INFO - Report saved: data/report_20260413_151359.txt
+2026-04-13 15:13:59,350 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:15:15,230 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:15:15,231 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:15:15,243 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:15:15,247 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:15:15,247 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:15:15,255 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:15:15,258 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:15:15,258 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:15:15,260 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:15:15,260 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:15:15,261 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:15:15,261 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:15:15,262 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:15:15,262 - __main__ - INFO - Scraping: Grant Writer Lagos Nigeria contact
+2026-04-13 15:15:15,263 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:15:23,926 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:15:27,666 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:15:27,667 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:15:27,668 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:15:27,669 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:15:27,670 - __main__ - WARNING - No results to save
+2026-04-13 15:15:27,670 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:15:27,671 - __main__ - INFO - Report saved: data/report_20260413_151527.txt
+2026-04-13 15:15:27,672 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:16:24,451 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:16:24,453 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:16:24,468 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:16:24,472 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:16:24,473 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:16:24,483 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:16:24,488 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:16:24,490 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:16:24,493 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:16:24,494 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:16:24,495 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:16:24,495 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:16:24,495 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:16:24,497 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:16:24,497 - __main__ - INFO - Scraping: Pharmacy Lagos Nigeria contact
+2026-04-13 15:16:33,957 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:16:36,288 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:16:36,288 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:16:36,288 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:16:36,288 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:16:36,289 - __main__ - WARNING - No results to save
+2026-04-13 15:16:36,289 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:16:36,290 - __main__ - INFO - Report saved: data/report_20260413_151636.txt
+2026-04-13 15:16:36,290 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:18:14,148 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:18:14,149 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:18:14,162 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:18:14,167 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:18:14,168 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:18:14,174 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:18:14,180 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:18:14,181 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:18:14,182 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:18:14,183 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:18:14,183 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:18:14,183 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:18:14,184 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:18:14,185 - __main__ - INFO - Scraping: Errand Runner Lagos Nigeria contact
+2026-04-13 15:18:14,185 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:18:24,122 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:18:26,887 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:18:26,888 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:18:26,889 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:18:26,889 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:18:26,890 - __main__ - WARNING - No results to save
+2026-04-13 15:18:26,890 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:18:26,892 - __main__ - INFO - Report saved: data/report_20260413_151826.txt
+2026-04-13 15:18:26,892 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:19:08,486 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:19:08,486 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:19:08,501 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:19:08,506 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:19:08,507 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:19:08,514 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:19:08,517 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:19:08,518 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:19:08,520 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:19:08,520 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:19:08,520 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:19:08,521 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:19:08,521 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:19:08,522 - __main__ - INFO - Scraping: Home & Maintenance Lagos
+2026-04-13 15:19:08,523 - __main__ - INFO - Scraping: Home Cleaner Lagos Nigeria contact
+2026-04-13 15:19:17,919 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:19:21,338 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:19:21,339 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:19:21,339 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:19:21,339 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:19:21,340 - __main__ - WARNING - No results to save
+2026-04-13 15:19:21,342 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:19:21,343 - __main__ - INFO - Report saved: data/report_20260413_151921.txt
+2026-04-13 15:19:21,343 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:21:21,238 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:21:21,239 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:21:21,244 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:21:21,248 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:21:21,249 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:21:21,255 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:21:21,257 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:21:21,257 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:21:21,258 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:21:21,258 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:21:21,259 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:21:21,259 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:21:21,259 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:21:21,260 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:21:21,260 - __main__ - INFO - Scraping [bing_search]: Pet Groomer Lagos Nigeria contact
+2026-04-13 15:21:30,632 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:21:34,959 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:21:34,959 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:21:34,959 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:21:34,963 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:21:34,963 - __main__ - WARNING - No results to save
+2026-04-13 15:21:34,963 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:21:34,964 - __main__ - INFO - Report saved: data/report_20260413_152134.txt
+2026-04-13 15:21:34,965 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:21:56,268 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:21:56,269 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:21:56,274 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:21:56,277 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:21:56,277 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:21:56,282 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:21:56,284 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:21:56,284 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:21:56,286 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:21:56,286 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:21:56,286 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:21:56,286 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:21:56,287 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:21:56,287 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:21:56,288 - __main__ - INFO - Scraping [bing_search]: Music Instructor Lagos Nigeria contact
+2026-04-13 15:21:59,234 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:21:59,869 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:22:04,874 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:22:09,300 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:22:09,301 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:22:09,303 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:22:09,303 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:22:09,304 - __main__ - WARNING - No results to save
+2026-04-13 15:22:09,304 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:22:09,305 - __main__ - INFO - Report saved: data/report_20260413_152209.txt
+2026-04-13 15:22:09,308 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:22:56,435 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:22:56,436 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:22:56,445 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:22:56,449 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:22:56,450 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:22:56,457 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:22:56,460 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:22:56,461 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:22:56,462 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:22:56,463 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:22:56,463 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:22:56,463 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:22:56,464 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:22:56,464 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:22:56,465 - __main__ - INFO - Scraping [bing_search]: Laundry Lagos Nigeria contact
+2026-04-13 15:22:59,231 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:22:59,659 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:23:04,665 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:23:04,666 - __main__ - INFO - Starting to clean 5 raw scraper records
+2026-04-13 15:23:08,782 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:23:08,782 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:23:08,784 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:23:08,785 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:23:08,785 - __main__ - WARNING - No results to save
+2026-04-13 15:23:08,786 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:23:08,787 - __main__ - INFO - Report saved: data/report_20260413_152308.txt
+2026-04-13 15:23:08,787 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:23:30,088 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:23:30,088 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:23:30,090 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:23:30,092 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:23:30,092 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:23:30,095 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:23:30,096 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:23:30,097 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:23:30,097 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:23:30,097 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:23:30,098 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:23:30,098 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:23:30,098 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:23:30,098 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:23:30,098 - __main__ - INFO - Scraping [bing_search]: Surveyor Lagos Nigeria contact
+2026-04-13 15:23:32,160 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:23:32,869 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:23:37,874 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:23:37,875 - __main__ - INFO - Starting to clean 5 raw scraper records
+2026-04-13 15:23:42,069 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:23:42,073 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:23:42,075 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:23:42,076 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:23:42,077 - __main__ - WARNING - No results to save
+2026-04-13 15:23:42,078 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:23:42,079 - __main__ - INFO - Report saved: data/report_20260413_152342.txt
+2026-04-13 15:23:42,080 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:24:45,659 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:24:45,660 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:24:45,666 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:24:45,670 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:24:45,670 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:24:45,680 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:24:45,684 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:24:45,684 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:24:45,686 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:24:45,686 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:24:45,687 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:24:45,687 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:24:45,687 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:24:45,688 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:24:45,689 - __main__ - INFO - Scraping [bing_search]: Souvenir Vendor Lagos Nigeria contact
+2026-04-13 15:24:47,820 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:24:48,718 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:24:53,724 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:24:53,724 - __main__ - INFO - Starting to clean 5 raw scraper records
+2026-04-13 15:24:57,563 - __main__ - INFO - Cleaned to 0 valid records
+2026-04-13 15:24:57,565 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:24:57,565 - __main__ - INFO - Deduplicated: 0 -> 0 records
+2026-04-13 15:24:57,566 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:24:57,567 - __main__ - WARNING - No results to save
+2026-04-13 15:24:57,567 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:24:57,569 - __main__ - INFO - Report saved: data/report_20260413_152457.txt
+2026-04-13 15:24:57,569 - __main__ - INFO - Pipeline complete. Total records: 0
+2026-04-13 15:27:35,038 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:27:35,039 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:27:35,050 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:27:35,056 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:27:35,056 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:27:35,064 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:27:35,068 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:27:35,069 - __main__ - INFO - Test mode: Using 2 Bing + BusinessList queries (skipping Google Maps)
+2026-04-13 15:27:35,071 - __main__ - INFO - Generated 2 queries
+2026-04-13 15:27:35,072 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:27:35,072 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:27:35,073 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:27:35,073 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:27:35,074 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:27:35,074 - __main__ - INFO - Scraping [bing_search]: Optician Lagos Nigeria contact
+2026-04-13 15:27:37,376 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:27:38,463 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:27:43,469 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:27:43,470 - __main__ - INFO - Starting to clean 5 raw scraper records
+2026-04-13 15:27:48,937 - __main__ - INFO - Cleaned to 5 valid records
+2026-04-13 15:27:48,939 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:27:48,939 - __main__ - INFO - Deduplicated: 5 -> 5 records
+2026-04-13 15:27:48,940 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:27:48,942 - __main__ - INFO - Saved JSON: data/businesses_20260413_152748.json
+2026-04-13 15:27:48,967 - __main__ - INFO - Saved CSV: data/businesses_20260413_152748.csv
+2026-04-13 15:27:48,977 - __main__ - WARNING - Could not save Excel: No module named 'openpyxl'
+2026-04-13 15:27:48,978 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:27:48,980 - __main__ - INFO - Report saved: data/report_20260413_152748.txt
+2026-04-13 15:27:48,980 - __main__ - INFO - Pipeline complete. Total records: 5
+2026-04-13 15:37:31,025 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 15:37:31,026 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 15:37:31,030 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 15:37:31,031 - __main__ - INFO - Starting scraping pipeline in test mode
+2026-04-13 15:37:31,031 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 15:37:31,032 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 15:37:31,033 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 15:37:31,033 - __main__ - INFO - Test mode: Using 5 Bing + 5 BusinessList structured queries
+2026-04-13 15:37:31,033 - __main__ - INFO - Generated 10 queries
+2026-04-13 15:37:31,033 - __main__ - INFO - Step 2: Batching and prioritizing queries...
+2026-04-13 15:37:31,033 - __main__ - INFO - Organized into 1 batches
+2026-04-13 15:37:31,033 - __main__ - INFO - Step 3: Executing scraping tasks...
+2026-04-13 15:37:31,033 - __main__ - INFO - Processing batch 1/1
+2026-04-13 15:37:31,033 - __main__ - INFO - Scraping [bing_search]: DJ Abuja Nigeria contact
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [bing_search]: DJ Enugu Nigeria contact
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [bing_search]: DJ Kano Nigeria contact
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [bing_search]: DJ Lagos Nigeria contact
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [bing_search]: DJ Port Harcourt Nigeria contact
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Abuja
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Enugu
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Kano
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 15:37:31,034 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Port Harcourt
+2026-04-13 15:37:33,294 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:37:33,295 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:37:33,785 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:37:34,165 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:37:34,283 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:37:34,284 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:37:34,345 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:37:35,423 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:37:35,733 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 15:37:35,960 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 15:37:40,963 - __main__ - INFO - Step 4: Cleaning and standardizing data...
+2026-04-13 15:37:40,963 - __main__ - INFO - Starting to clean 25 raw scraper records
+2026-04-13 15:37:50,044 - __main__ - INFO - Record 9 invalid (bing_search): Best Dj Port Harcourt, errors: ['No contact information (phone, WhatsApp, or email)']
+2026-04-13 15:38:03,462 - geopy - INFO - Received an HTTP error (429): 
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>429 Too many requests</title>
+  </head>
+  <body>
+    <h1>Error 429 Too many requests</h1>
+    <p>Too many requests</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-lis1490046-LIS 1776091082 362369660</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
+
+2026-04-13 15:38:09,639 - geopy - INFO - Received an HTTP error (429): 
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>429 Too many requests</title>
+  </head>
+  <body>
+    <h1>Error 429 Too many requests</h1>
+    <p>Too many requests</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-lis1490035-LIS 1776091088 4222562805</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
+
+2026-04-13 15:38:15,753 - geopy - INFO - Received an HTTP error (429): 
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>429 Too many requests</title>
+  </head>
+  <body>
+    <h1>Error 429 Too many requests</h1>
+    <p>Too many requests</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-lis1490026-LIS 1776091094 4148594393</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
+
+2026-04-13 15:38:22,630 - geopy - INFO - Received an HTTP error (429): 
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>429 Too many requests</title>
+  </head>
+  <body>
+    <h1>Error 429 Too many requests</h1>
+    <p>Too many requests</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-lis1490043-LIS 1776091101 2372749862</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
+
+2026-04-13 15:38:28,439 - geopy - INFO - Received an HTTP error (429): 
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>429 Too many requests</title>
+  </head>
+  <body>
+    <h1>Error 429 Too many requests</h1>
+    <p>Too many requests</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-lis1490039-LIS 1776091107 601168210</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
+
+2026-04-13 15:38:28,441 - __main__ - INFO - Cleaned to 24 valid records
+2026-04-13 15:38:28,441 - __main__ - INFO - Step 5: Deduplicating results...
+2026-04-13 15:38:28,441 - __main__ - INFO - Deduplicated: 24 -> 24 records
+2026-04-13 15:38:28,441 - __main__ - INFO - Step 6: Saving results...
+2026-04-13 15:38:28,443 - __main__ - INFO - Saved JSON: data/businesses_20260413_153828.json
+2026-04-13 15:38:28,447 - __main__ - INFO - Saved CSV: data/businesses_20260413_153828.csv
+2026-04-13 15:38:28,448 - __main__ - WARNING - Could not save Excel: No module named 'openpyxl'
+2026-04-13 15:38:28,448 - __main__ - INFO - Step 7: Generating report...
+2026-04-13 15:38:28,449 - __main__ - INFO - Report saved: data/report_20260413_153828.txt
+2026-04-13 15:38:28,449 - __main__ - INFO - Pipeline complete. Total records: 24
