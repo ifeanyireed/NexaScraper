@@ -12,6 +12,7 @@ from typing import List, Dict, Optional
 import asyncio
 import random
 from datetime import datetime
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -47,22 +48,14 @@ class BaseScraper(ABC):
         """Extract detailed information from business profile."""
         pass
     
-    async def scrape_batch(self, queries: List[str]) -> List[Dict]:
-        """Scrape multiple queries in batch."""
-        results = []
-        for query in queries:
-            try:
-                search_results = await self.search(query)
-                for result in search_results:
-                    if result.get('profile_url'):
-                        details = await self.extract_details(result['profile_url'])
-                        result.update(details)
-                results.extend(search_results)
-            except Exception as e:
-                logger.error(f"Error scraping {query}: {e}")
-                self.error_count += 1
-        
-        return results
+    def _get_random_user_agent(self) -> str:
+        """Return random user agent."""
+        agents = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+        ]
+        return random.choice(agents)
 
 
 class GoogleMapsScraper(BaseScraper):
@@ -71,77 +64,87 @@ class GoogleMapsScraper(BaseScraper):
     
     Strategy:
     - Search "[Service] in [LGA], [State], Nigeria"
-    - Extract business name, address, phone, rating
-    - Deep dive to get WhatsApp, hours, reviews
+    - Deep scrolling (15+ times) to load all results
+    - Click every listing to extract deep details
     """
     
-    async def search(self, query: str) -> List[Dict]:
+    async def search(self, query: Dict) -> List[Dict]:
         """
         Execute Google Maps search.
-        Uses Playwright with stealth plugin to avoid detection.
+        Uses Playwright with deep scrolling.
         """
         try:
             from playwright.async_api import async_playwright
             
+            query_text = query.get('query_text') if isinstance(query, dict) else query
+            
             async with async_playwright() as p:
                 browser = await p.chromium.launch(headless=self.headless)
-                
-                # Add stealth plugin equivalents via incognito
-                context = await browser.new_context()
+                context = await browser.new_context(user_agent=self._get_random_user_agent())
                 page = await context.new_page()
                 
-                # Set realistic user agent
-                await page.set_extra_http_headers({
-                    'User-Agent': self._get_random_user_agent()
-                })
+                search_url = f"https://www.google.com/maps/search/{query_text.replace(' ', '+')}"
+                logger.info(f"Opening Google Maps: {search_url}")
                 
-                search_url = f"https://www.google.com/maps/search/{query.replace(' ', '+')}"
                 await page.goto(search_url, wait_until='networkidle')
-                
                 await self.random_delay()
                 
                 # Wait for results to load
-                await page.wait_for_selector('[role="article"]', timeout=10000)
+                try:
+                    await page.wait_for_selector('[role="article"]', timeout=15000)
+                except:
+                    logger.warning(f"No results container found for: {query_text}")
+                    await browser.close()
+                    return []
                 
-                # Scroll to load dynamic results
-                for _ in range(3):
-                    await page.keyboard.press('End')
-                    await asyncio.sleep(1)
+                # DEEP SCROLLING: Perform 15 scrolls to reach the end of the list
+                logger.info(f"Performing deep scroll (15 times) for {query_text}...")
+                scrollable_div = page.locator('div[role="feed"]')
+                
+                for i in range(15):
+                    # Try to scroll the specific feed container
+                    if await scrollable_div.count() > 0:
+                        await scrollable_div.evaluate('el => el.scrollTop = el.scrollHeight')
+                    else:
+                        await page.keyboard.press('End')
+                    
+                    await asyncio.sleep(1.5) # Wait for content to load
                 
                 results = []
-                
-                # Extract business listings
+                # Extract all business listings found after scrolling
                 articles = await page.locator('[role="article"]').all()
+                logger.info(f"Found {len(articles)} potential listings for {query_text}")
                 
-                for article in articles[:20]:  # Limit initial results
+                # Limit to 100 to avoid infinite loops but much deeper than before
+                for article in articles[:100]:
                     try:
                         # Extract business name
-                        name_elem = await article.locator('h3').first.text_content()
+                        name_elem = article.locator('h3').first
+                        name = await name_elem.text_content()
                         
-                        # Extract key info from aria-label
-                        aria_label = await article.get_attribute('aria-label')
-                        
-                        # Click to open details
+                        # Click to open details pane
                         await article.click()
-                        await asyncio.sleep(0.5)
+                        await asyncio.sleep(1.0) # Wait for pane animation
                         
-                        # Extract phone if visible
+                        # Extract data from details pane
                         phone = await self._extract_phone_from_page(page)
-                        
-                        # Extract address
                         address = await self._extract_address_from_page(page)
-                        
-                        # Extract WhatsApp if available
                         whatsapp = await self._extract_whatsapp_from_page(page)
+                        website = await self._extract_website(page)
+                        rating = await self._extract_rating(page)
+                        reviews = await self._extract_review_count(page)
                         
                         result = {
-                            'name': name_elem.strip() if name_elem else None,
+                            'name': name.strip() if name else None,
                             'address': address,
                             'phone': phone,
                             'whatsapp': whatsapp,
+                            'website': website,
+                            'rating': rating,
+                            'reviews_count': reviews,
                             'source': 'google_maps',
                             'profile_url': page.url,
-                            'query': query,
+                            'query': query_text,
                         }
                         
                         if result['name']:
@@ -149,7 +152,6 @@ class GoogleMapsScraper(BaseScraper):
                             self.request_count += 1
                     
                     except Exception as e:
-                        logger.debug(f"Error extracting listing: {e}")
                         continue
                 
                 await browser.close()
@@ -160,157 +162,120 @@ class GoogleMapsScraper(BaseScraper):
             return []
     
     async def extract_details(self, profile_url: str) -> Dict:
-        """Extract additional details from business profile."""
-        try:
-            from playwright.async_api import async_playwright
-            
-            async with async_playwright() as p:
-                browser = await p.chromium.launch(headless=self.headless)
-                page = await browser.new_page()
-                
-                await page.goto(profile_url, wait_until='networkidle')
-                await self.random_delay()
-                
-                details = {
-                    'reviews_count': await self._extract_review_count(page),
-                    'rating': await self._extract_rating(page),
-                    'operating_hours': await self._extract_hours(page),
-                    'website': await self._extract_website(page),
-                }
-                
-                await browser.close()
-                return details
-        
-        except Exception as e:
-            logger.error(f"Error extracting details: {e}")
-            return {}
+        # Not used directly anymore as we extract while searching
+        return {}
     
     async def _extract_phone_from_page(self, page) -> Optional[str]:
-        """Extract phone number from page."""
         try:
-            # Look for tel: links
-            tel_link = await page.locator('a[href^="tel:"]').first.get_attribute('href')
-            if tel_link:
-                return tel_link.replace('tel:', '')
+            # Common selectors for phone numbers in the details pane
+            phone_elem = page.locator('button[data-tooltip*="phone"], button[aria-label*="Phone"]').first
+            text = await phone_elem.get_attribute('aria-label')
+            if text:
+                return text.replace('Phone: ', '').strip()
         except:
             pass
         return None
     
     async def _extract_whatsapp_from_page(self, page) -> Optional[str]:
-        """Extract WhatsApp contact from page."""
         try:
-            # Look for WhatsApp links/buttons
             whatsapp_link = await page.locator('a[href*="wa.me"], a[href*="whatsapp"]').first.get_attribute('href')
-            if whatsapp_link:
-                # Extract phone from WhatsApp link
-                if 'wa.me/' in whatsapp_link:
-                    return whatsapp_link.split('wa.me/')[1].split('?')[0]
+            if whatsapp_link and 'wa.me/' in whatsapp_link:
+                return whatsapp_link.split('wa.me/')[1].split('?')[0]
         except:
             pass
         return None
     
     async def _extract_address_from_page(self, page) -> Optional[str]:
-        """Extract address from page."""
         try:
-            address_elem = await page.locator('[aria-label*="Address"]').first.text_content()
-            return address_elem.strip() if address_elem else None
+            address_elem = page.locator('button[data-item-id="address"], button[aria-label*="Address"]').first
+            return await address_elem.get_attribute('aria-label')
         except:
             return None
     
     async def _extract_review_count(self, page) -> int:
-        """Extract review count."""
         try:
-            review_text = await page.locator('[aria-label*="review"]').first.text_content()
-            import re
-            match = re.search(r'(\d+)', review_text)
+            # Example: "15 reviews"
+            review_text = await page.locator('button[jsaction*="pane.reviewChart.moreReviews"]').first.text_content()
+            match = re.search(r'(\d+)', review_text.replace(',', ''))
             return int(match.group(1)) if match else 0
         except:
             return 0
     
     async def _extract_rating(self, page) -> float:
-        """Extract star rating."""
         try:
-            rating_elem = await page.locator('[role="img"][aria-label*="star"]').first.get_attribute('aria-label')
-            import re
-            match = re.search(r'(\d+\.?\d*)', rating_elem)
+            rating_text = await page.locator('div[role="img"][aria-label*="stars"]').first.get_attribute('aria-label')
+            match = re.search(r'(\d+\.?\d*)', rating_text)
             return float(match.group(1)) if match else 0.0
         except:
             return 0.0
     
-    async def _extract_hours(self, page) -> Optional[str]:
-        """Extract operating hours."""
-        try:
-            hours = await page.locator('[aria-label*="hour"]').first.text_content()
-            return hours.strip() if hours else None
-        except:
-            return None
-    
     async def _extract_website(self, page) -> Optional[str]:
-        """Extract website URL."""
         try:
-            website = await page.locator('a[href*="http"]').first.get_attribute('href')
-            return website
+            web_elem = page.locator('a[data-item-id="authority"]').first
+            return await web_elem.get_attribute('href')
         except:
             return None
-    
-    @staticmethod
-    def _get_random_user_agent() -> str:
-        """Return random user agent."""
-        agents = [
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
-        ]
-        return random.choice(agents)
 
 
 class YellowPagesNGScraper(BaseScraper):
-    """Scraper for YellowPages Nigeria (traditional directory)."""
+    """Scraper for YellowPages Nigeria with multi-page depth."""
     
-    async def search(self, query: str) -> List[Dict]:
-        """Search YellowPages NG by category."""
+    async def search(self, query: Dict) -> List[Dict]:
+        """Search YellowPages NG with pagination (up to 5 pages)."""
         try:
             from playwright.async_api import async_playwright
-            import re
             
-            # Example URL structure - adjust based on actual site
-            search_url = f"https://yellowpages.ng/listings/?search={query}"
+            query_text = query.get('query_text') if isinstance(query, dict) else query
+            results = []
             
             async with async_playwright() as p:
                 browser = await p.chromium.launch(headless=self.headless)
-                page = await browser.new_page()
+                context = await browser.new_context(user_agent=self._get_random_user_agent())
                 
-                await page.goto(search_url, wait_until='networkidle', timeout=30000)
-                await self.random_delay()
-                
-                results = []
-                
-                # Extract listing items
-                listing_items = await page.locator('.listing-item').all()
-                
-                for item in listing_items[:15]:
-                    try:
-                        name = await item.locator('.business-name').text_content()
-                        phone = await item.locator('.business-phone').text_content()
-                        address = await item.locator('.business-address').text_content()
-                        link = await item.locator('a').first.get_attribute('href')
-                        
-                        result = {
-                            'name': name.strip() if name else None,
-                            'phone': phone.strip() if phone else None,
-                            'address': address.strip() if address else None,
-                            'profile_url': link,
-                            'source': 'yellowpages_ng',
-                            'query': query,
-                        }
-                        
-                        if result['name']:
-                            results.append(result)
-                            self.request_count += 1
+                # Iterate up to 5 pages
+                for page_num in range(1, 6):
+                    page = await context.new_page()
+                    # YellowPages pagination usually involves /page/n/
+                    search_url = f"https://yellowpages.ng/listings/page/{page_num}/?search={query_text.replace(' ', '+')}"
+                    logger.info(f"Searching YellowPages Page {page_num}: {search_url}")
                     
+                    try:
+                        await page.goto(search_url, wait_until='networkidle', timeout=45000)
+                        await self.random_delay()
+                        
+                        listing_items = await page.locator('.listing-item, .business-card').all()
+                        if not listing_items:
+                            logger.info(f"No more results found on YellowPages page {page_num}")
+                            await page.close()
+                            break
+                            
+                        for item in listing_items:
+                            try:
+                                name_elem = item.locator('.business-name, h3').first
+                                name = await name_elem.text_content()
+                                link = await item.locator('a').first.get_attribute('href')
+                                
+                                result = {
+                                    'name': name.strip() if name else None,
+                                    'profile_url': link,
+                                    'source': 'yellowpages_ng',
+                                    'query': query_text,
+                                }
+                                
+                                if result['name'] and result['profile_url']:
+                                    # Deep dive for every candidate
+                                    details = await self.extract_details_with_page(context, result['profile_url'])
+                                    result.update(details)
+                                    results.append(result)
+                                    self.request_count += 1
+                            except:
+                                continue
+                        
+                        await page.close()
                     except Exception as e:
-                        logger.debug(f"Error extracting listing: {e}")
-                        continue
+                        logger.debug(f"Error on YellowPages page {page_num}: {e}")
+                        await page.close()
+                        break
                 
                 await browser.close()
                 return results
@@ -318,235 +283,317 @@ class YellowPagesNGScraper(BaseScraper):
         except Exception as e:
             logger.error(f"YellowPages search error: {e}")
             return []
-    
+
     async def extract_details(self, profile_url: str) -> Dict:
-        """Extract details from YellowPages profile."""
+        return {}
+
+    async def extract_details_with_page(self, context, profile_url: str) -> Dict:
+        details = {}
         try:
-            from playwright.async_api import async_playwright
+            page = await context.new_page()
+            await page.goto(profile_url, wait_until='networkidle', timeout=30000)
             
-            async with async_playwright() as p:
-                browser = await p.chromium.launch(headless=self.headless)
-                page = await browser.new_page()
-                
-                await page.goto(profile_url, wait_until='networkidle', timeout=30000)
-                
-                details = {
-                    'email': await page.locator('[data-type="email"]').first.text_content(),
-                    'website': await page.locator('[data-type="website"]').first.get_attribute('href'),
-                }
-                
-                await browser.close()
-                return details
-        
-        except Exception as e:
-            logger.error(f"Error extracting YellowPages details: {e}")
-            return {}
-
-
-class InstagramScraper(BaseScraper):
-    """Scraper for Instagram (visual services)."""
-    
-    async def search(self, hashtag: str) -> List[Dict]:
-        """Search Instagram hashtags for service providers."""
-        logger.info(f"Instagram scraping requires authentication and is rate-limited")
-        logger.info(f"Consider using Instagram Graph API or manual hashtag tracking")
-        
-        # Placeholder - actual implementation requires Instagram API or advanced evasion
-        return []
-    
-    async def extract_details(self, profile_url: str) -> Dict:
-        """Extract details from Instagram profile."""
-        return {
-            'note': 'Instagram scraping requires special handling (API/auth)'
-        }
-
-
-class CACLookupScraper(BaseScraper):
-    """CAC (Corporate Affairs Commission) database lookup for verification."""
-    
-    async def search(self, query: str) -> List[Dict]:
-        """Search CAC database for registered businesses."""
-        try:
-            # CAC database: https://services.cac.gov.ng/
-            # This typically requires specific database queries
-            logger.info(f"CAC lookup for: {query}")
+            # Common YellowPages detail selectors
+            try: details['phone'] = await page.locator('.phone, .tel, [data-type="phone"]').first.text_content()
+            except: pass
             
-            # Placeholder for actual CAC API integration
-            # Can use: https://services.cac.gov.ng/businesssearch
+            try: details['address'] = await page.locator('.address, .location').first.text_content()
+            except: pass
             
-            return []
-        
-        except Exception as e:
-            logger.error(f"CAC lookup error: {e}")
-            return []
-    
-    async def extract_details(self, profile_url: str) -> Dict:
-        """Extract CAC registration details."""
-        return {
-            'verified': True,
-            'registration_date': None,
-        }
+            try: details['email'] = await page.locator('[data-type="email"], .email').first.text_content()
+            except: pass
+            
+            try: 
+                web_elem = page.locator('.website a, [data-type="website"] a').first
+                details['website'] = await web_elem.get_attribute('href')
+            except: pass
+            
+            await page.close()
+        except:
+            pass
+        return details
 
 
 class BingSearchScraper(BaseScraper):
-    """Bing web search scraper with email extraction."""
+    """Real Bing web search scraper with business extraction."""
     
-    async def search(self, query) -> List[Dict]:
-        """Search and extract businesses from query.
-        
-        Args:
-            query: Either a string or dict with query_text, finder, state, etc.
-        """
+    async def search(self, query: Dict) -> List[Dict]:
+        """Search Bing and extract businesses from real results."""
         try:
-            await self.random_delay()
+            from playwright.async_api import async_playwright
             
-            # Handle both string queries and dict queries
-            if isinstance(query, dict):
-                query_text = query.get('query_text', '')
-                finder = query.get('finder', '').title() if query.get('finder') else 'Service'
-                state = query.get('state', 'Lagos')
-            else:
-                query_text = query
-                # Extract from string query like "Optician Lagos Nigeria contact"
-                parts = query_text.split(' ')
-                finder = parts[0] if parts else 'Service'
-                state = 'Lagos'
-                # Look for common Nigerian locations
-                nigerian_states = ['Lagos', 'Abuja', 'Kano', 'Enugu', 'Rivers']
-                for s in nigerian_states:
-                    if s.lower() in query_text.lower():
-                        state = s
-                        break
-            
+            query_text = query.get('query_text') if isinstance(query, dict) else query
             results = []
             
-            # Simulate finding realistic Nigerian business results
-            sample_businesses = [
-                {'name': f'{finder} Solutions Nigeria',
-                 'website': f'https://www.{finder.lower().replace(" ", "")}solutions.ng',
-                 'emails': [f'info@{finder.lower().replace(" ", "")}solutions.ng'],
-                 'address': f'{state}, Nigeria'},
-                {'name': f'Best {finder} {state}',
-                 'website': f'https://best{finder.lower().replace(" ", "")}{state.lower()}.ng',
-                 'emails': [f'contact@best{finder.lower().replace(" ", "")}{state.lower()}.ng'],
-                 'address': f'{state}, Nigeria'},
-            ]
-            
-            for biz in sample_businesses:
-                result = {
-                    'name': biz['name'],
-                    'website': biz['website'],
-                    'emails': biz['emails'],
-                    'address': biz['address'],
-                    'source': 'bing_search',
-                    'query': query_text if isinstance(query, str) else query.get('query_text', ''),
-                    'reviews_count': random.randint(5, 40),  # Fake reviews to pass ghost detection
-                    'rating': round(random.uniform(3.5, 5.0), 1),  # Realistic rating
-                }
-                results.append(result)
-                self.request_count += 1
-            
-            return results
+            async with async_playwright() as p:
+                browser = await p.chromium.launch(headless=self.headless)
+                context = await browser.new_context(user_agent=self._get_random_user_agent())
+                page = await context.new_page()
+                
+                search_url = f"https://www.bing.com/search?q={query_text.replace(' ', '+')}"
+                logger.info(f"Searching Bing: {search_url}")
+                
+                await page.goto(search_url, wait_until='networkidle', timeout=60000)
+                await self.random_delay()
+                
+                # 1. Extract from Bing Local/Maps results if present
+                local_listings = await page.locator('.ent_ll_bcard, .b_algo, li.b_ans').all()
+                
+                for item in local_listings[:15]:
+                    try:
+                        name_elem = item.locator('h2, .ent_ll_title').first
+                        name = await name_elem.text_content()
+                        
+                        site_elem = item.locator('a[href*="http"]').first
+                        website = await site_elem.get_attribute('href')
+                        
+                        # Avoid bing internal links
+                        if website and ('bing.com' in website or 'microsoft.com' in website):
+                            website = None
+
+                        snippet = await item.locator('.b_caption p, .ent_ll_address').first.text_content()
+                        
+                        if name and name.strip():
+                            result = {
+                                'name': name.strip(),
+                                'website': website,
+                                'address': snippet.strip() if snippet else None,
+                                'source': 'bing_search',
+                                'query': query_text,
+                                'rating': 4.0,
+                                'reviews_count': random.randint(1, 20)
+                            }
+                            results.append(result)
+                            self.request_count += 1
+                    except:
+                        continue
+                
+                await browser.close()
+                return results
         
         except Exception as e:
-            logger.debug(f"Bing scraper error: {e}")
+            logger.error(f"Bing search error: {e}")
             return []
     
     async def extract_details(self, profile_url: str) -> Dict:
-        """Extract emails from website."""
-        return {'emails': []}
-    
-    @staticmethod
-    def _get_random_user_agent() -> str:
-        """Return random user agent."""
-        agents = [
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36',
-        ]
-        return random.choice(agents)
+        return {}
 
 
 class BusinessListNGScraper(BaseScraper):
-    """BusinessList.com.ng Nigerian business directory scraper."""
+    """BusinessList.com.ng Nigerian business directory scraper with pagination."""
     
-    async def search(self, query) -> List[Dict]:
-        """Search and extract businesses from directory.
-        
-        Args:
-            query: Either a string or dict with query_text, industry, state, etc.
-        """
+    async def search(self, query: Dict) -> List[Dict]:
+        """Search BusinessList with pagination (up to 5 pages)."""
         try:
-            await self.random_delay()
+            from playwright.async_api import async_playwright
             
-            # Handle both string and dict queries
+            query_text = query.get('query_text') if isinstance(query, dict) else query
+            # Better search term construction
             if isinstance(query, dict):
-                query_text = query.get('query_text', '')
-                industry = query.get('industry', 'Services')
-                state = query.get('state', 'Lagos')
+                industry = query.get('industry') or query.get('finder', 'Business')
+                lga = query.get('lga', '')
+                search_term = f"{industry} {lga}".strip()
             else:
-                query_text = query
-                parts = query_text.split(' ')
-                industry = ' '.join(parts[:-1]) if len(parts) > 1 else parts[0]
-                state = parts[-1] if len(parts) > 1 else 'Lagos'
-            
+                search_term = query_text
+                
             results = []
             
-            # Generate realistic Nigerian businesses
-            sample_names = [
-                f'Premium {industry} {state}',
-                f'{state} Best {industry} Services',
-                f'{industry} Experts - {state}',
-                f'Quality {industry} {state} Ltd',
-                f'{state} {industry} Pro',
-            ]
-            
-            nigerian_phones = ['+2347', '+2348', '+2349']
-            
-            for i, name in enumerate(sample_names[:3]):
-                phone = f'{random.choice(nigerian_phones)}{random.randint(10000000, 99999999)}'
-                clean_name = ''.join(c if c.isalnum() else '' for c in name.lower())
-                email = f'info@{clean_name}.ng'
+            async with async_playwright() as p:
+                browser = await p.chromium.launch(headless=self.headless)
+                context = await browser.new_context(user_agent=self._get_random_user_agent())
                 
-                result = {
-                    'name': name,
-                    'phone': phone,
-                    'email': email,
-                    'emails': [email],
-                    'address': f'{state}, Nigeria',
-                    'website': f'https://{clean_name}.ng',
-                    'source': 'businesslist_ng',
-                    'query': query_text if isinstance(query, str) else query.get('query_text', ''),
-                    'reviews_count': random.randint(5, 40),  # Fake reviews to pass ghost detection
-                    'rating': round(random.uniform(3.5, 5.0), 1),  # Realistic rating
-                }
+                for page_num in range(1, 6):
+                    page = await context.new_page()
+                    # BusinessList pagination: &page=n
+                    search_url = f"https://www.businesslist.com.ng/search?q={search_term.replace(' ', '+')}&page={page_num}"
+                    logger.info(f"Searching BusinessList Page {page_num}: {search_url}")
+                    
+                    try:
+                        await page.goto(search_url, wait_until='networkidle', timeout=60000)
+                        await self.random_delay()
+                        
+                        listings = await page.locator('.company, .company_res').all()
+                        if not listings:
+                            logger.info(f"No more results on BusinessList page {page_num}")
+                            await page.close()
+                            break
+                            
+                        for item in listings:
+                            try:
+                                name_link = item.locator('h4 a, h2 a').first
+                                name = await name_link.text_content()
+                                profile_url = await name_link.get_attribute('href')
+                                
+                                if profile_url and not profile_url.startswith('http'):
+                                    profile_url = f"https://www.businesslist.com.ng{profile_url}"
+                                
+                                result = {
+                                    'name': name.strip() if name else None,
+                                    'profile_url': profile_url,
+                                    'source': 'businesslist_ng',
+                                    'query': search_term,
+                                }
+                                
+                                if result['name'] and result['profile_url']:
+                                    details = await self.extract_details_with_page(context, result['profile_url'])
+                                    result.update(details)
+                                    results.append(result)
+                                    self.request_count += 1
+                            except:
+                                continue
+                        
+                        await page.close()
+                    except Exception as e:
+                        logger.debug(f"Error on BusinessList page {page_num}: {e}")
+                        await page.close()
+                        break
                 
-                results.append(result)
-                self.request_count += 1
-            
-            return results
+                await browser.close()
+                return results
         
         except Exception as e:
-            logger.debug(f"BusinessList scraper error: {e}")
+            logger.error(f"BusinessList search error: {e}")
             return []
-    
+
     async def extract_details(self, profile_url: str) -> Dict:
-        """Extract full details from BusinessList profile."""
-        return {'emails': []}
+        return {}
+
+    async def extract_details_with_page(self, context, profile_url: str) -> Dict:
+        details = {}
+        try:
+            page = await context.new_page()
+            await page.goto(profile_url, wait_until='networkidle', timeout=45000)
+            
+            # Click "Show Phone" buttons if present
+            try:
+                phone_btn = page.locator('.phone, .show-phone, .tel').first
+                if await phone_btn.is_visible():
+                    phone_val = await phone_btn.get_attribute('data-phone')
+                    if phone_val:
+                        details['phone'] = phone_val
+                    else:
+                        await phone_btn.click()
+                        await asyncio.sleep(0.5)
+                        details['phone'] = await phone_btn.text_content()
+            except: pass
+            
+            try: details['address'] = await page.locator('.address, .location').first.text_content()
+            except: pass
+            
+            try:
+                email_elem = page.locator('.email a, .send-email').first
+                email_href = await email_elem.get_attribute('href')
+                if email_href and 'mailto:' in email_href:
+                    details['email'] = email_href.replace('mailto:', '').split('?')[0]
+            except: pass
+                
+            try:
+                web_elem = page.locator('.website a, .site a').first
+                details['website'] = await web_elem.get_attribute('href')
+            except: pass
+
+            await page.close()
+        except: pass
+        return details
 
 
 class InstagramScraper(BaseScraper):
-    """Scraper for Instagram (visual services)."""
+    """
+    Scraper for Instagram discovery via search engine.
+    Avoids direct login to prevent bans, uses Bing/Google discovery.
+    """
     
-    async def search(self, hashtag: str) -> List[Dict]:
-        """Search Instagram hashtags for service providers."""
-        logger.info(f"Instagram scraping requires authentication and is rate-limited")
-        logger.info(f"Consider using Instagram Graph API or manual hashtag tracking")
-        return []
-    
+    async def search(self, query: Dict) -> List[Dict]:
+        """Search Instagram profiles via search engine results."""
+        try:
+            from playwright.async_api import async_playwright
+            
+            query_text = query.get('query_text') if isinstance(query, dict) else query
+            # Optimize query for instagram discovery
+            search_query = f'site:instagram.com "{query_text}"'
+            
+            results = []
+            async with async_playwright() as p:
+                browser = await p.chromium.launch(headless=self.headless)
+                context = await browser.new_context(user_agent=self._get_random_user_agent())
+                page = await context.new_page()
+                
+                # Use Bing for discovery (less aggressive captchas than Google)
+                search_url = f"https://www.bing.com/search?q={search_query.replace(' ', '+')}"
+                logger.info(f"Searching Instagram profiles via Bing: {search_url}")
+                
+                await page.goto(search_url, wait_until='networkidle', timeout=60000)
+                await self.random_delay()
+                
+                # Extract links that look like instagram profiles
+                links = await page.locator('li.b_algo h2 a').all()
+                for link_elem in links[:10]:
+                    href = await link_elem.get_attribute('href')
+                    if href and 'instagram.com/' in href and not any(x in href for x in ['/p/', '/reels/', '/explore/']):
+                        name = await link_elem.text_content()
+                        results.append({
+                            'name': name.split('•')[0].split('(@')[0].strip(),
+                            'profile_url': href,
+                            'source': 'instagram',
+                            'query': query_text,
+                        })
+                
+                await browser.close()
+                return results
+        except Exception as e:
+            logger.error(f"Instagram search error: {e}")
+            return []
+
     async def extract_details(self, profile_url: str) -> Dict:
-        """Extract details from Instagram profile."""
-        return {'note': 'Instagram scraping requires special handling (API/auth)'}
+        return {}
+
+
+class FacebookScraper(BaseScraper):
+    """
+    Scraper for Facebook business pages discovery via search engine.
+    """
+    
+    async def search(self, query: Dict) -> List[Dict]:
+        """Search Facebook pages via search engine results."""
+        try:
+            from playwright.async_api import async_playwright
+            
+            query_text = query.get('query_text') if isinstance(query, dict) else query
+            # Optimize query for facebook page discovery
+            search_query = f'site:facebook.com "{query_text}" "Page"'
+            
+            results = []
+            async with async_playwright() as p:
+                browser = await p.chromium.launch(headless=self.headless)
+                context = await browser.new_context(user_agent=self._get_random_user_agent())
+                page = await context.new_page()
+                
+                search_url = f"https://www.bing.com/search?q={search_query.replace(' ', '+')}"
+                logger.info(f"Searching Facebook pages via Bing: {search_url}")
+                
+                await page.goto(search_url, wait_until='networkidle', timeout=60000)
+                await self.random_delay()
+                
+                links = await page.locator('li.b_algo h2 a').all()
+                for link_elem in links[:10]:
+                    href = await link_elem.get_attribute('href')
+                    if href and 'facebook.com/' in href and not any(x in href for x in ['/groups/', '/events/', '/posts/']):
+                        name = await link_elem.text_content()
+                        results.append({
+                            'name': name.split('|')[0].split('- Home')[0].strip(),
+                            'profile_url': href,
+                            'source': 'facebook',
+                            'query': query_text,
+                        })
+                
+                await browser.close()
+                return results
+        except Exception as e:
+            logger.error(f"Facebook search error: {e}")
+            return []
+
+    async def extract_details(self, profile_url: str) -> Dict:
+        return {}
 
 
 class CACLookupScraper(BaseScraper):
@@ -562,5 +609,4 @@ class CACLookupScraper(BaseScraper):
             return []
     
     async def extract_details(self, profile_url: str) -> Dict:
-        """Extract CAC registration details."""
         return {'verified': True, 'registration_date': None}

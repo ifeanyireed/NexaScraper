@@ -1200,3 +1200,112 @@
 2026-04-13 15:38:28,448 - __main__ - INFO - Step 7: Generating report...
 2026-04-13 15:38:28,449 - __main__ - INFO - Report saved: data/report_20260413_153828.txt
 2026-04-13 15:38:28,449 - __main__ - INFO - Pipeline complete. Total records: 24
+2026-04-13 17:16:26,103 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 17:16:26,114 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 17:16:26,119 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 17:16:26,133 - __main__ - INFO - Starting segment-based scraping pipeline in test mode
+2026-04-13 17:16:26,134 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 17:16:26,139 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 17:16:26,147 - utils.query_generator - INFO - Generated 515 city-based queries
+2026-04-13 17:16:26,148 - __main__ - INFO - Test mode: Using 5 Bing + 5 BusinessList structured queries
+2026-04-13 17:16:26,151 - __main__ - INFO - Generated 10 total queries
+2026-04-13 17:16:26,151 - __main__ - INFO - Step 2: Grouping queries into segments...
+2026-04-13 17:16:26,151 - __main__ - INFO - Organized into 10 segments
+2026-04-13 17:16:26,151 - __main__ - INFO - Step 3: Processing segments sequentially...
+2026-04-13 17:16:26,151 - __main__ - INFO - --- Segment 1/10: Carpenter in Abuja ---
+2026-04-13 17:16:26,151 - __main__ - INFO - Scraping [bing_search]: Carpenter Abuja Nigeria contact
+2026-04-13 17:16:28,688 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:16:30,920 - __main__ - INFO - Found 2 new unique records in this segment
+2026-04-13 17:16:32,922 - __main__ - INFO - --- Segment 2/10: Carpenter in Enugu ---
+2026-04-13 17:16:32,922 - __main__ - INFO - Scraping [bing_search]: Carpenter Enugu Nigeria contact
+2026-04-13 17:16:36,652 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:16:38,030 - __main__ - INFO - Found 2 new unique records in this segment
+2026-04-13 17:16:40,032 - __main__ - INFO - --- Segment 3/10: Carpenter in Kano ---
+2026-04-13 17:16:40,032 - __main__ - INFO - Scraping [bing_search]: Carpenter Kano Nigeria contact
+2026-04-13 17:16:44,151 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:16:46,206 - __main__ - INFO - Found 2 new unique records in this segment
+2026-04-13 17:16:48,209 - __main__ - INFO - --- Segment 4/10: Carpenter in Lagos ---
+2026-04-13 17:16:48,209 - __main__ - INFO - Scraping [bing_search]: Carpenter Lagos Nigeria contact
+2026-04-13 17:16:51,750 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:16:53,474 - __main__ - INFO - Found 2 new unique records in this segment
+2026-04-13 17:16:55,476 - __main__ - INFO - --- Segment 5/10: Carpenter in Port Harcourt ---
+2026-04-13 17:16:55,476 - __main__ - INFO - Scraping [bing_search]: Carpenter Port Harcourt Nigeria contact
+2026-04-13 17:17:00,254 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:17:02,494 - __main__ - INFO - Found 1 new unique records in this segment
+2026-04-13 17:17:04,496 - __main__ - INFO - --- Segment 6/10: Home & Maintenance in Abuja ---
+2026-04-13 17:17:04,496 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Abuja
+2026-04-13 17:17:07,770 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:17:09,545 - __main__ - INFO - Found 3 new unique records in this segment
+2026-04-13 17:17:11,548 - __main__ - INFO - --- Segment 7/10: Home & Maintenance in Enugu ---
+2026-04-13 17:17:11,548 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Enugu
+2026-04-13 17:17:14,691 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:17:16,562 - __main__ - INFO - Found 3 new unique records in this segment
+2026-04-13 17:17:18,566 - __main__ - INFO - --- Segment 8/10: Home & Maintenance in Kano ---
+2026-04-13 17:17:18,566 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Kano
+2026-04-13 17:17:22,935 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:17:25,131 - __main__ - INFO - Found 3 new unique records in this segment
+2026-04-13 17:17:27,134 - __main__ - INFO - --- Segment 9/10: Home & Maintenance in Lagos ---
+2026-04-13 17:17:27,134 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Lagos
+2026-04-13 17:17:29,499 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:17:32,312 - __main__ - INFO - Found 3 new unique records in this segment
+2026-04-13 17:17:34,315 - __main__ - INFO - --- Segment 10/10: Home & Maintenance in Port Harcourt ---
+2026-04-13 17:17:34,315 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance Port Harcourt
+2026-04-13 17:17:38,763 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:17:42,835 - __main__ - INFO - Found 3 new unique records in this segment
+2026-04-13 17:17:44,845 - __main__ - INFO - Step 4: Saving final compiled results...
+2026-04-13 17:17:44,848 - __main__ - INFO - Saved JSON: data/businesses_20260413_171744.json
+2026-04-13 17:17:44,881 - __main__ - INFO - Saved CSV: data/businesses_20260413_171744.csv
+2026-04-13 17:17:44,893 - __main__ - WARNING - Could not save Excel: No module named 'openpyxl'
+2026-04-13 17:17:44,893 - __main__ - INFO - Step 5: Generating final report...
+2026-04-13 17:17:44,894 - __main__ - INFO - Report saved: data/report_20260413_171744.txt
+2026-04-13 17:17:44,895 - __main__ - INFO - Pipeline complete. Total unique records: 24
+2026-04-13 17:18:51,868 - utils.google_sheets_writer - ERROR - Google Sheets authentication failed: 
+2026-04-13 17:18:51,870 - __main__ - WARNING - Google Sheets integration disabled: 
+2026-04-13 17:18:51,874 - __main__ - INFO - Nigerian Business Scraper initialized
+2026-04-13 17:18:51,876 - __main__ - INFO - Starting segment-based scraping pipeline in test mode
+2026-04-13 17:18:51,877 - __main__ - INFO - Step 1: Generating search queries...
+2026-04-13 17:18:51,881 - utils.query_generator - INFO - Generated 2060 LGA-based queries
+2026-04-13 17:18:51,882 - __main__ - INFO - Test mode: Using 5 Bing + 5 BusinessList structured queries
+2026-04-13 17:18:51,883 - __main__ - INFO - Generated 10 total queries
+2026-04-13 17:18:51,883 - __main__ - INFO - Step 2: Grouping queries into segments...
+2026-04-13 17:18:51,883 - __main__ - INFO - Organized into 10 segments
+2026-04-13 17:18:51,883 - __main__ - INFO - Step 3: Processing segments sequentially...
+2026-04-13 17:18:51,883 - __main__ - INFO - --- Segment 1/10: Fashion School in Ajeromi-Ifelodun ---
+2026-04-13 17:18:51,883 - __main__ - INFO - Scraping [bing_search]: Fashion School in Ajeromi-Ifelodun, Lagos Nigeria contact
+2026-04-13 17:18:56,852 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:18:58,854 - __main__ - INFO - Found 2 new unique records in this segment
+2026-04-13 17:19:00,856 - __main__ - INFO - --- Segment 2/10: Fashion School in Alimosho ---
+2026-04-13 17:19:00,858 - __main__ - INFO - Scraping [bing_search]: Fashion School in Alimosho, Lagos Nigeria contact
+2026-04-13 17:19:05,434 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:19:08,899 - __main__ - INFO - --- Segment 3/10: Fashion School in Apapa ---
+2026-04-13 17:19:08,900 - __main__ - INFO - Scraping [bing_search]: Fashion School in Apapa, Lagos Nigeria contact
+2026-04-13 17:19:11,200 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:19:14,745 - __main__ - INFO - --- Segment 4/10: Fashion School in Badagry ---
+2026-04-13 17:19:14,745 - __main__ - INFO - Scraping [bing_search]: Fashion School in Badagry, Lagos Nigeria contact
+2026-04-13 17:19:18,896 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:19:22,422 - __main__ - INFO - --- Segment 5/10: Fashion School in Epe ---
+2026-04-13 17:19:22,422 - __main__ - INFO - Scraping [bing_search]: Fashion School in Epe, Lagos Nigeria contact
+2026-04-13 17:19:24,771 - __main__ - INFO -   -> Got 2 results from bing_search
+2026-04-13 17:19:28,270 - __main__ - INFO - --- Segment 6/10: Home & Maintenance in Ajeromi-Ifelodun ---
+2026-04-13 17:19:28,272 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance in Ajeromi-Ifelodun, Lagos
+2026-04-13 17:19:30,592 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:19:32,916 - __main__ - INFO - Found 3 new unique records in this segment
+2026-04-13 17:19:34,918 - __main__ - INFO - --- Segment 7/10: Home & Maintenance in Alimosho ---
+2026-04-13 17:19:34,918 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance in Alimosho, Lagos
+2026-04-13 17:19:39,187 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:19:42,335 - __main__ - INFO - --- Segment 8/10: Home & Maintenance in Apapa ---
+2026-04-13 17:19:42,335 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance in Apapa, Lagos
+2026-04-13 17:19:46,563 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:19:49,081 - __main__ - INFO - --- Segment 9/10: Home & Maintenance in Badagry ---
+2026-04-13 17:19:49,081 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance in Badagry, Lagos
+2026-04-13 17:19:53,521 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:19:56,317 - __main__ - INFO - --- Segment 10/10: Home & Maintenance in Epe ---
+2026-04-13 17:19:56,318 - __main__ - INFO - Scraping [businesslist_ng]: Home & Maintenance in Epe, Lagos
+2026-04-13 17:20:00,309 - __main__ - INFO -   -> Got 3 results from businesslist_ng
+2026-04-13 17:20:03,291 - __main__ - INFO - Step 4: Saving final compiled results...
+2026-04-13 17:20:03,295 - __main__ - INFO - Saved JSON: data/businesses_20260413_172003.json
+2026-04-13 17:20:03,336 - __main__ - INFO - Saved CSV: data/businesses_20260413_172003.csv
+2026-04-13 17:20:03,341 - __main__ - WARNING - Could not save Excel: No module named 'openpyxl'
+2026-04-13 17:20:03,342 - __main__ - INFO - Step 5: Generating final report...
+2026-04-13 17:20:03,342 - __main__ - INFO - Report saved: data/report_20260413_172003.txt
+2026-04-13 17:20:03,343 - __main__ - INFO - Pipeline complete. Total unique records: 5

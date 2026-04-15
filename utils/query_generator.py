@@ -105,23 +105,33 @@ class SearchQueryGenerator:
         logger.info(f"Generated {len(queries)} city-based queries")
         return queries
     
-    def generate_platform_specific_queries(self) -> Dict[str, List[Dict]]:
+    def generate_platform_specific_queries(self, use_priority: bool = True) -> Dict[str, List[Dict]]:
         """
         Generate platform-specific queries optimized for each scraper source.
         """
         platform_queries = {}
         
+        # Get locations based on priority flag
+        locations = self.get_priority_locations() if use_priority else self.get_all_locations()
+        
         # Google Maps queries
-        gmaps_queries = self.generate_lga_based_queries(use_priority=True)
+        gmaps_queries = self.generate_lga_based_queries(use_priority=use_priority)
         platform_queries['google_maps'] = gmaps_queries
         
         # Bing Search queries (web results with emails/websites)
         bing_queries = []
-        for finder in self.get_all_finders()[:50]:  # Sample top finders
-            for state in self.priority_cities:
+        
+        # Limit finders for platform specific to keep it manageable if not in priority mode
+        max_finders = 20 if use_priority else 50
+        
+        finders_sample = self.get_all_finders()[:max_finders]
+        
+        for finder in finders_sample:
+            for state, lga in locations:
                 query = {
-                    'query_text': f"{finder} {state} Nigeria contact",
+                    'query_text': f"{finder} in {lga}, {state} Nigeria contact",
                     'finder': finder,
+                    'lga': lga,
                     'state': state,
                     'query_type': 'web_search',
                     'source': 'bing_search',
@@ -129,13 +139,45 @@ class SearchQueryGenerator:
                 bing_queries.append(query)
         platform_queries['bing_search'] = bing_queries
         
+        # Facebook queries
+        facebook_queries = []
+        for finder in finders_sample:
+            for state, lga in locations:
+                query = {
+                    'query_text': f"{finder} in {lga}, {state} Nigeria",
+                    'finder': finder,
+                    'lga': lga,
+                    'state': state,
+                    'query_type': 'social_discovery',
+                    'source': 'facebook',
+                }
+                facebook_queries.append(query)
+        platform_queries['facebook'] = facebook_queries
+
+        # Instagram queries
+        instagram_queries = []
+        for finder in finders_sample:
+            for state, lga in locations:
+                query = {
+                    'query_text': f"{finder} in {lga}, {state} Nigeria",
+                    'finder': finder,
+                    'lga': lga,
+                    'state': state,
+                    'query_type': 'social_discovery',
+                    'source': 'instagram',
+                }
+                instagram_queries.append(query)
+        platform_queries['instagram'] = instagram_queries
+        
         # BusinessList.com.ng queries (Nigerian directory)
         businesslist_queries = []
-        for industry in self.industries.keys():
-            for state in self.priority_cities:
+        max_industries = 5 if use_priority else 15
+        for industry in list(self.industries.keys())[:max_industries]:
+            for state, lga in locations:
                 query = {
-                    'query_text': f"{industry} {state}",
+                    'query_text': f"{industry} in {lga}, {state}",
                     'industry': industry,
+                    'lga': lga,
                     'state': state,
                     'query_type': 'directory_search',
                     'source': 'businesslist_ng',
@@ -143,23 +185,20 @@ class SearchQueryGenerator:
                 businesslist_queries.append(query)
         platform_queries['businesslist_ng'] = businesslist_queries
         
-        # YellowPages NG queries (usually category-browse-based)
+        # YellowPages NG queries
         yellowpages_queries = []
-        for industry in self.industries.keys():
-            for state in self.priority_cities:
+        for industry in list(self.industries.keys())[:max_industries]:
+            for state, lga in locations:
                 query = {
-                    'query_text': f"{industry} in {state}",
+                    'query_text': f"{industry} in {lga}, {state}",
                     'industry': industry,
+                    'lga': lga,
                     'state': state,
-                    'query_type': 'industry_state',
+                    'query_type': 'industry_lga',
                     'source': 'yellowpages_ng',
                 }
                 yellowpages_queries.append(query)
         platform_queries['yellowpages_ng'] = yellowpages_queries
-        
-        # Jiji queries (visual services focus)
-        jiji_queries = self.generate_city_based_queries()
-        platform_queries['jiji'] = jiji_queries
         
         return platform_queries
     

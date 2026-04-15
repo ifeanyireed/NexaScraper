@@ -17,7 +17,7 @@ INDUSTRIES = {
         "content": ["Copywriter", "Social Media Manager", "Graphic Designer", "Video Editor", "Translator"]
     },
     "Education & Skill Development": {
-        "academic": ["Home Tutor", "Music Instructor", "Language Teacher", "Exam Prep Tutor"],
+        "academic": ["Home Tutor", "Music Instructor", "Schools", "Language Teacher", "Exam Prep Tutor"],
         "vocational": ["Driving School", "Tech Skill Trainer", "Fashion School"]
     },
     "Events & Entertainment": {
@@ -84,9 +84,15 @@ SCRAPER_SOURCES = {
         "difficulty": "high",
         "description": "Visual services and social presence"
     },
+    "facebook": {
+        "name": "Facebook",
+        "priority": 7,
+        "difficulty": "high",
+        "description": "Business pages and community groups"
+    },
     "cac": {
         "name": "CAC / NG-Check",
-        "priority": 7,
+        "priority": 8,
         "difficulty": "low",
         "description": "Professional/Corporate verification"
     }

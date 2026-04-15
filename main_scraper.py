@@ -3,9 +3,9 @@ Main Nigerian Business Scraper Orchestrator.
 
 Manages the complete multi-city, multi-industry scraping workflow:
 1. Query Generation
-2. Batch Processing with Rate Limiting
+2. Segment-based Processing (one service/lga per time)
 3. Data Extraction & Cleaning
-4. Result Storage
+4. Sequential Google Sheets Writing
 5. Duplicate Detection & Validation
 """
 
@@ -15,9 +15,10 @@ import asyncio
 import pandas as pd
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Set
 import sys
 import os
+from collections import defaultdict
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -51,6 +52,7 @@ class NigerianBusinessScraper:
         self.max_workers = max_workers
         self.results = []
         self.errors = []
+        self.seen_signatures: Set[tuple] = set()  # Track duplicates across segments
         
         # Import after module initialization
         from utils.query_generator import SearchQueryGenerator, QueryBatcher
@@ -79,61 +81,178 @@ class NigerianBusinessScraper:
             'bing_search': BingSearchScraper(),
             'businesslist_ng': BusinessListNGScraper(),
             'yellowpages_ng': YellowPagesNGScraper(),
+            'instagram': InstagramScraper(),
+            'facebook': FacebookScraper(),
         }
         
         logger.info("Nigerian Business Scraper initialized")
     
-    async def run_full_pipeline(self, mode: str = 'priority'):
+    async def run_full_pipeline(self, mode: str = 'priority', states: Optional[List[str]] = None):
         """
-        Execute complete scraping pipeline.
+        Execute complete scraping pipeline in segments.
         
         Args:
-            mode: 'priority' (priority cities), 'full' (all states), or 'test' (sample)
+            mode: 'priority', 'full', or 'test'
+            states: Optional list of states to filter by
         """
-        logger.info(f"Starting scraping pipeline in {mode} mode")
+        logger.info(f"Starting segment-based scraping pipeline in {mode} mode")
+        if states:
+            logger.info(f"Filtering for states: {', '.join(states)}")
         
         try:
             # Step 1: Generate queries
             logger.info("Step 1: Generating search queries...")
             queries = self._generate_queries(mode)
-            logger.info(f"Generated {len(queries)} queries")
             
-            # Step 2: Batch and prioritize
-            logger.info("Step 2: Batching and prioritizing queries...")
-            batches = self.query_batcher.batch_queries(queries, batch_size=10)
-            logger.info(f"Organized into {len(batches)} batches")
+            # Filter by state if requested
+            if states:
+                queries = [q for q in queries if q.get('state') in states]
             
-            # Step 3: Execute scraping
-            logger.info("Step 3: Executing scraping tasks...")
-            await self._execute_scraping(batches)
+            logger.info(f"Generated {len(queries)} total queries after filtering")
             
-            # Step 4: Clean data
-            logger.info("Step 4: Cleaning and standardizing data...")
-            self._clean_results()
+            # Step 2: Group queries into segments (service/location)
+            logger.info("Step 2: Grouping queries into segments...")
+            segments = self._group_queries_by_segment(queries)
+            logger.info(f"Organized into {len(segments)} segments")
             
-            # Step 5: Deduplicate
-            logger.info("Step 5: Deduplicating results...")
-            self._deduplicate_results()
+            # Step 3: Process segments sequentially
+            logger.info("Step 3: Processing segments sequentially...")
+            processed_count = 0
+            total_segments = len(segments)
             
-            # Step 6: Save results
-            logger.info("Step 6: Saving results...")
+            for i, (segment_key, segment_queries) in enumerate(segments.items(), 1):
+                service, location = segment_key
+                logger.info(f"--- Segment {i}/{total_segments} ({i/total_segments*100:.1f}%): {service} in {location} ---")
+                
+                try:
+                    # A. Scrape queries in this segment
+                    segment_results = await self._execute_segment_scraping(segment_queries)
+                    
+                    if not segment_results:
+                        logger.info(f"No results for segment: {service} in {location}")
+                        continue
+                    
+                    # B. Clean segment data
+                    cleaned_segment = self._clean_segment_results(segment_results)
+                    
+                    # C. Deduplicate within segment and against global seen list
+                    new_records = self._deduplicate_segment(cleaned_segment)
+                    
+                    if new_records:
+                        logger.info(f"Found {len(new_records)} new unique records in this segment")
+                        
+                        # D. Add to main results
+                        self.results.extend(new_records)
+                        
+                        # E. Write sequentially to Google Sheets
+                        if self.sheets_integration:
+                            self._append_to_sheets(new_records)
+                        
+                        # F. Save local incremental backup
+                        self._save_incremental_backup()
+                    
+                    processed_count += 1
+                    
+                except Exception as segment_error:
+                    logger.error(f"Error processing segment {segment_key}: {segment_error}")
+                    continue
+
+                # Small delay between segments to respect rate limits
+                await asyncio.sleep(2)
+            
+            # Step 4: Final save of all results
+            logger.info("Step 4: Saving final compiled results...")
             self._save_results()
             
-            # Step 6b: Export to Google Sheets
-            if self.sheets_integration:
-                logger.info("Step 6b: Exporting to Google Sheets...")
-                self._export_to_sheets()
-            
-            # Step 7: Generate report
-            logger.info("Step 7: Generating report...")
+            # Step 5: Generate report
+            logger.info("Step 5: Generating final report...")
             self._generate_report()
             
-            logger.info(f"Pipeline complete. Total records: {len(self.results)}")
+            logger.info(f"Pipeline complete. Total unique records: {len(self.results)}")
         
         except Exception as e:
             logger.error(f"Pipeline error: {e}", exc_info=True)
             raise
-    
+
+    def _save_incremental_backup(self):
+        """Save a temporary backup of results found so far."""
+        if len(self.results) % 50 == 0: # Every 50 new records
+            try:
+                temp_file = self.output_dir / "latest_backup.csv"
+                df = pd.DataFrame(self.results)
+                df.to_csv(temp_file, index=False)
+                logger.info(f"Incremental backup saved: {len(self.results)} records")
+            except Exception as e:
+                logger.warning(f"Backup failed: {e}")
+
+    def _group_queries_by_segment(self, queries: List[Dict]) -> Dict[tuple, List[Dict]]:
+        """Group queries by (service, LGA) tuple."""
+        segments = defaultdict(list)
+        for q in queries:
+            service = q.get('finder') or q.get('industry') or 'Unknown Service'
+            # Strictly use LGA for segmentation as requested
+            lga = q.get('lga') or 'Unknown LGA'
+            segments[(service, lga)].append(q)
+        return segments
+
+    async def _execute_segment_scraping(self, segment_queries: List[Dict]) -> List[Dict]:
+        """Execute all queries for a single segment."""
+        tasks = []
+        for query in segment_queries:
+            source = query.get('source') or 'google_maps'
+            scraper = self.scrapers.get(source)
+            if scraper:
+                tasks.append(self._scrape_query(scraper, query))
+        
+        results_lists = await asyncio.gather(*tasks, return_exceptions=True)
+        
+        combined_results = []
+        for res in results_lists:
+            if isinstance(res, Exception):
+                logger.error(f"Segment task error: {res}")
+                self.errors.append(str(res))
+            elif res:
+                combined_results.extend(res)
+        return combined_results
+
+    def _clean_segment_results(self, raw_results: List[Dict]) -> List[Dict]:
+        """Clean results from a single segment."""
+        cleaned_results = []
+        for res in raw_results:
+            try:
+                cleaned = self.data_cleaner.clean_business_record(res)
+                is_valid, _ = self.data_cleaner.validate_business_record(cleaned)
+                if is_valid and not self.data_cleaner.detect_ghost_business(cleaned):
+                    cleaned_results.append(cleaned)
+            except Exception as e:
+                logger.error(f"Error cleaning record in segment: {e}")
+        return cleaned_results
+
+    def _deduplicate_segment(self, cleaned_results: List[Dict]) -> List[Dict]:
+        """Deduplicate results within segment and against already seen businesses."""
+        new_records = []
+        for record in cleaned_results:
+            # Create signature: (name.lower, primary_phone or address)
+            name = record.get('name', '').lower().strip()
+            contact = record.get('primary_phone') or record.get('address', '')
+            signature = (name, contact)
+            
+            if signature not in self.seen_signatures:
+                self.seen_signatures.add(signature)
+                new_records.append(record)
+        return new_records
+
+    def _append_to_sheets(self, records: List[Dict]):
+        """Append records to Google Sheets sequentially."""
+        try:
+            self.sheets_integration.writer.append_businesses(
+                records,
+                sheet_name="Businesses"
+            )
+            logger.info(f"✓ Appended {len(records)} records to Google Sheets")
+        except Exception as e:
+            logger.error(f"Failed to append to Google Sheets: {e}")
+
     def _generate_queries(self, mode: str) -> List[Dict]:
         """Generate queries based on mode."""
         queries = []
@@ -169,32 +288,6 @@ class NigerianBusinessScraper:
         
         return self.query_batcher.prioritize_queries(queries)
     
-    async def _execute_scraping(self, batches: List[List[Dict]]):
-        """Execute scraping with rate limiting."""
-        for batch_idx, batch in enumerate(batches):
-            logger.info(f"Processing batch {batch_idx + 1}/{len(batches)}")
-            
-            tasks = []
-            for query in batch:
-                source = query.get('source') or 'google_maps'
-                scraper = self.scrapers.get(source)
-                
-                if scraper:
-                    tasks.append(self._scrape_query(scraper, query))
-            
-            # Run with semaphore to limit concurrency
-            results = await asyncio.gather(*tasks, return_exceptions=True)
-            
-            for result in results:
-                if isinstance(result, Exception):
-                    logger.error(f"Task error: {result}")
-                    self.errors.append(str(result))
-                else:
-                    self.results.extend(result)
-            
-            # Delay between batches
-            await asyncio.sleep(5)
-    
     async def _scrape_query(self, scraper, query: Dict) -> List[Dict]:
         """Scrape single query and attach query metadata to results."""
         try:
@@ -216,44 +309,6 @@ class NigerianBusinessScraper:
         except Exception as e:
             logger.error(f"Scrape error for {query}: {e}", exc_info=True)
             return []
-    
-    def _clean_results(self):
-        """Clean and standardize results."""
-        cleaned_results = []
-        
-        logger.info(f"Starting to clean {len(self.results)} raw scraper records")
-        
-        for i, result in enumerate(self.results):
-            try:
-                cleaned = self.data_cleaner.clean_business_record(result)
-                
-                # Validate record
-                is_valid, errors = self.data_cleaner.validate_business_record(cleaned)
-                
-                if not is_valid:
-                    logger.info(f"Record {i} invalid ({result.get('source','?')}): {result.get('name','?')}, errors: {errors}")
-                
-                if is_valid:
-                    # Check if ghost business
-                    if not self.data_cleaner.detect_ghost_business(cleaned):
-                        cleaned_results.append(cleaned)
-                    else:
-                        logger.debug(f"Filtered ghost business: {cleaned.get('name')}")
-                else:
-                    logger.debug(f"Invalid record: {cleaned.get('name')} - {errors}")
-            
-            except Exception as e:
-                logger.error(f"Error cleaning record: {e}")
-        
-        self.results = cleaned_results
-        logger.info(f"Cleaned to {len(self.results)} valid records")
-    
-    def _deduplicate_results(self):
-        """Remove duplicate records."""
-        before_count = len(self.results)
-        self.results = self.deduplicator.deduplicate(self.results)
-        
-        logger.info(f"Deduplicated: {before_count} -> {len(self.results)} records")
     
     def _save_results(self):
         """Save results to multiple formats."""
@@ -282,32 +337,6 @@ class NigerianBusinessScraper:
             logger.info(f"Saved Excel: {excel_file}")
         except Exception as e:
             logger.warning(f"Could not save Excel: {e}")
-    
-    def _export_to_sheets(self):
-        """Export results to Google Sheets."""
-        if not self.results:
-            logger.warning("No results to export to Google Sheets")
-            return
-        
-        try:
-            # Option 1: All businesses in single sheet
-            self.sheets_integration.writer.write_businesses(
-                self.results,
-                sheet_name="Businesses"
-            )
-            
-            # Option 2: Create grouped sheets by state (uncomment to enable)
-            # self.sheets_integration.export_results(
-            #     self.results,
-            #     grouped=True,
-            #     group_by="state"
-            # )
-            
-            logger.info(f"✓ Successfully exported {len(self.results)} records to Google Sheets")
-        
-        except Exception as e:
-            logger.error(f"Failed to export to Google Sheets: {e}")
-    
     
     def _generate_report(self):
         """Generate summary report with service/location segmentation."""
@@ -439,28 +468,22 @@ RECOMMENDATIONS
         return '\n'.join(lines)
 
 
-class ScraperConfig:
-    """Configuration for scraper behavior."""
-    
-    PROXY_ROTATION = False  # Set to True with rotating proxy list
-    STEALTH_MODE = True  # Use stealth plugins/headers
-    HEADLESS_BROWSER = True
-    MAX_RETRIES = 3
-    TIMEOUT_SECONDS = 30
-    DELAY_BETWEEN_REQUESTS = (2, 5)  # seconds
-
-
 if __name__ == '__main__':
-    import sys
+    import argparse
     
-    # Get mode from command line
-    mode = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    parser = argparse.ArgumentParser(description='Nigerian Business Scraper')
+    parser.add_argument('mode', choices=['test', 'priority', 'full'], help='Scraping mode')
+    parser.add_argument('--states', nargs='+', help='Specific states to scrape (e.g., Lagos "Oyo State")')
+    parser.add_argument('--max-workers', type=int, default=3, help='Max concurrent scrapers')
     
-    if mode not in ['test', 'priority', 'full']:
-        print(f"Invalid mode: {mode}")
-        print("Usage: python main_scraper.py [test|priority|full]")
-        sys.exit(1)
+    args = parser.parse_args()
     
     # Run scraper
-    scraper = NigerianBusinessScraper()
-    asyncio.run(scraper.run_full_pipeline(mode=mode))
+    scraper = NigerianBusinessScraper(max_workers=args.max_workers)
+    
+    try:
+        asyncio.run(scraper.run_full_pipeline(mode=args.mode, states=args.states))
+    except KeyboardInterrupt:
+        print("\nScraper stopped by user. Final results saved to incremental backups.")
+    except Exception as e:
+        print(f"\nScraper failed: {e}")

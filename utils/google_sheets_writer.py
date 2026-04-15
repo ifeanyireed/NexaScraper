@@ -208,13 +208,20 @@ class GoogleSheetsWriter:
             headers = existing[0] if existing else list(records[0].keys())
             
             new_rows = []
+            if not existing:
+                # Add headers as first row if sheet is empty
+                new_rows.append(headers)
+                
             for record in records:
-                row = tuple(str(record.get(key, '')) for key in headers)
-                if row not in existing_set:
-                    new_rows.append(list(row))
+                row = [str(record.get(key, '')) for key in headers]
+                if tuple(row) not in existing_set:
+                    new_rows.append(row)
             
             if new_rows:
                 worksheet.append_rows(new_rows)
+                if not existing:
+                    # Format headers if we just added them
+                    self._format_header_row(worksheet, len(headers))
                 logger.info(f"✓ Appended {len(new_rows)} new records to '{sheet_name}'")
             else:
                 logger.info(f"No new records to append (all exist)")
