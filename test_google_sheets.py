@@ -7,19 +7,24 @@ Run this to test your setup before running the full scraper.
 import sys
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env in the same directory as the script
+env_path = Path(__file__).parent / '.env'
+load_dotenv(dotenv_path=env_path)
 
 def check_environment():
     """Check if environment variables are set."""
     print("\n📋 Checking Environment Variables...")
     
-    sheet_id = os.getenv('SHEET_ID')
+    sheet_id = os.getenv('GOOGLE_SHEET_ID') or os.getenv('SHEET_ID')
     creds_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
     
     if not sheet_id:
-        print("❌ SHEET_ID not set in .env")
+        print("❌ SHEET_ID or GOOGLE_SHEET_ID not set in .env")
         return False
     else:
-        print(f"✓ SHEET_ID: {sheet_id[:20]}...")
+        print(f"✓ Sheet ID: {sheet_id[:20]}...")
     
     if not creds_path:
         print("❌ GOOGLE_APPLICATION_CREDENTIALS not set in .env")

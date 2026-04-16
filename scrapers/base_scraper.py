@@ -89,11 +89,24 @@ class GoogleMapsScraper(BaseScraper):
                 await page.goto(search_url, wait_until='networkidle')
                 await self.random_delay()
                 
+                # Handle Consent Screen (Accept All)
+                try:
+                    consent_button = page.locator('button[aria-label*="Accept all"], button[aria-label*="Agree"], .VfPpkd-LgbsBe[aria-label*="Accept"]').first
+                    if await consent_button.is_visible(timeout=5000):
+                        logger.info("Handling Google consent screen...")
+                        await consent_button.click()
+                        await page.wait_for_load_state('networkidle')
+                except:
+                    pass
+
                 # Wait for results to load
                 try:
-                    await page.wait_for_selector('[role="article"]', timeout=15000)
+                    # Look for either articles or the feed role
+                    await page.wait_for_selector('[role="article"], [role="main"], div[role="feed"]', timeout=20000)
                 except:
                     logger.warning(f"No results container found for: {query_text}")
+                    # Take a screenshot for debugging if possible (optional)
+                    # await page.screenshot(path=f"error_{query_text.replace(' ', '_')}.png")
                     await browser.close()
                     return []
                 

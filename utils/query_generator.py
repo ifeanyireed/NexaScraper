@@ -141,7 +141,7 @@ class SearchQueryGenerator:
         
         # Facebook queries
         facebook_queries = []
-        for finder in finders_sample:
+        for finder in finders_sample[:20]:
             for state, lga in locations:
                 query = {
                     'query_text': f"{finder} in {lga}, {state} Nigeria",
@@ -156,7 +156,7 @@ class SearchQueryGenerator:
 
         # Instagram queries
         instagram_queries = []
-        for finder in finders_sample:
+        for finder in finders_sample[:20]:
             for state, lga in locations:
                 query = {
                     'query_text': f"{finder} in {lga}, {state} Nigeria",
@@ -171,12 +171,11 @@ class SearchQueryGenerator:
         
         # BusinessList.com.ng queries (Nigerian directory)
         businesslist_queries = []
-        max_industries = 5 if use_priority else 15
-        for industry in list(self.industries.keys())[:max_industries]:
+        for finder in finders_sample:
             for state, lga in locations:
                 query = {
-                    'query_text': f"{industry} in {lga}, {state}",
-                    'industry': industry,
+                    'query_text': f"{finder} in {lga}, {state}",
+                    'finder': finder,
                     'lga': lga,
                     'state': state,
                     'query_type': 'directory_search',
@@ -184,14 +183,15 @@ class SearchQueryGenerator:
                 }
                 businesslist_queries.append(query)
         platform_queries['businesslist_ng'] = businesslist_queries
+
         
         # YellowPages NG queries
         yellowpages_queries = []
-        for industry in list(self.industries.keys())[:max_industries]:
+        for finder in finders_sample:
             for state, lga in locations:
                 query = {
-                    'query_text': f"{industry} in {lga}, {state}",
-                    'industry': industry,
+                    'query_text': f"{finder} in {lga}, {state}",
+                    'finder': finder,
                     'lga': lga,
                     'state': state,
                     'query_type': 'industry_lga',
@@ -199,6 +199,7 @@ class SearchQueryGenerator:
                 }
                 yellowpages_queries.append(query)
         platform_queries['yellowpages_ng'] = yellowpages_queries
+
         
         return platform_queries
     
@@ -281,14 +282,19 @@ class SearchQueryGenerator:
     
     def estimate_total_queries(self) -> Dict[str, int]:
         """Estimate total queries for all strategies."""
+        num_finders = len(self.get_all_finders())
+        num_priority_locs = len(self.get_priority_locations())
+        num_cities = len(self.priority_cities)
+        
         return {
-            'lga_based': len(self.get_all_finders()) * len(self.get_priority_locations()),
-            'city_based': len(self.get_all_finders()) * len(self.priority_cities),
-            'bing_search': 50 * len(self.priority_cities),  # Top 50 finders per city
-            'businesslist': len(self.industries) * len(self.priority_cities),
-            'platform_specific': len(self.industries) * len(self.priority_cities),
-            'instagram_hashtags': 50,  # Approximate
-            'cac_queries': len(self.priority_cities) * 7,  # ~7 corporate finders
+            'lga_based': num_finders * num_priority_locs,
+            'city_based': num_finders * num_cities,
+            'bing_search': 30 * num_priority_locs,  # Top 30 finders
+            'businesslist': 30 * num_priority_locs,
+            'yellowpages': 30 * num_priority_locs,
+            'social_discovery': 20 * num_priority_locs,
+            'instagram_hashtags': 50,
+            'cac_queries': num_cities * 7,
         }
 
 

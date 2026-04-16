@@ -59,7 +59,8 @@ class NigerianBusinessScraper:
         from utils.data_cleaner import DataCleaner, DataDeduplicator
         from scrapers.base_scraper import (
             GoogleMapsScraper, YellowPagesNGScraper,
-            BingSearchScraper, BusinessListNGScraper
+            BingSearchScraper, BusinessListNGScraper,
+            InstagramScraper, FacebookScraper
         )
         from utils.google_sheets_writer import GoogleSheetsIntegration
         
@@ -164,6 +165,14 @@ class NigerianBusinessScraper:
             logger.info("Step 4: Saving final compiled results...")
             self._save_results()
             
+            # Final Google Sheets Export (with summary stats)
+            if self.sheets_integration:
+                try:
+                    logger.info("Exporting final results and summary to Google Sheets...")
+                    self.sheets_integration.export_results(self.results)
+                except Exception as e:
+                    logger.warning(f"Final Google Sheets export failed: {e}")
+            
             # Step 5: Generate report
             logger.info("Step 5: Generating final report...")
             self._generate_report()
@@ -257,15 +266,21 @@ class NigerianBusinessScraper:
         """Generate queries based on mode."""
         queries = []
         
-        # For test mode: use structured queries with finder/industry/state/LGA
+        # For test mode: use a small sample from ALL sources for verification
         if mode == 'test':
-            platform_queries = self.query_generator.generate_platform_specific_queries()
-            # Use 5 Bing queries (different services) + 5 BusinessList queries
-            bing_queries = platform_queries.get('bing_search', [])[:5]
-            biz_queries = platform_queries.get('businesslist_ng', [])[:5]
-            queries.extend(bing_queries)
-            queries.extend(biz_queries)
-            logger.info(f"Test mode: Using {len(bing_queries)} Bing + {len(biz_queries)} BusinessList structured queries")
+            logger.info("Test mode: Sampling all enabled sources for verification...")
+            platform_queries = self.query_generator.generate_platform_specific_queries(use_priority=True)
+            
+            # Take 2 samples from every available source
+            for source, source_queries in platform_queries.items():
+                if source_queries:
+                    sample = source_queries[:2]
+                    for q in sample:
+                        q['source'] = source # Ensure source is set
+                    queries.extend(sample)
+                    logger.info(f"  + Added 2 sample queries for source: {source}")
+            
+            logger.info(f"Test mode initialized with {len(queries)} sample queries across all platforms")
         
         # For priority/full: use all sources
         else:
@@ -277,14 +292,15 @@ class NigerianBusinessScraper:
             else:
                 raise ValueError(f"Unknown mode: {mode}")
             
-            # Add platform-specific queries (Bing, BusinessList)
-            platform_queries = self.query_generator.generate_platform_specific_queries()
+            # Add platform-specific queries (Bing, BusinessList, Social, etc.)
+            platform_queries = self.query_generator.generate_platform_specific_queries(use_priority=(mode == 'priority'))
             
             queries.extend(gmap_queries)
-            queries.extend(platform_queries.get('bing_search', []))
-            queries.extend(platform_queries.get('businesslist_ng', []))
+            for source, source_queries in platform_queries.items():
+                if source != 'google_maps': # Already added gmap LGA queries
+                    queries.extend(source_queries)
             
-            logger.info(f"Generated {len(gmap_queries)} Google Maps, {len(platform_queries.get('bing_search', []))} Bing, {len(platform_queries.get('businesslist_ng', []))} BusinessList queries")
+            logger.info(f"Generated {len(queries)} total multi-platform queries")
         
         return self.query_batcher.prioritize_queries(queries)
     

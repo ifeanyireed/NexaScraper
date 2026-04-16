@@ -27,7 +27,7 @@ class EmailExtractor:
     
     @staticmethod
     def is_valid_email(email: str) -> bool:
-        """Validate email format."""
+        """Validate email format and filter out placeholders."""
         if not email:
             return False
         
@@ -37,16 +37,23 @@ class EmailExtractor:
         if not re.match(EmailExtractor.EMAIL_PATTERN, email):
             return False
         
-        # Check for common spam patterns
-        spam_patterns = [
+        # Check for common fake/placeholder patterns
+        fake_patterns = [
             r'test@', r'demo@', r'noreply@', r'no-reply@',
-            r'spam@', r'fake@', r'xxx@',
+            r'spam@', r'fake@', r'xxx@', r'example@',
+            r'email@', r'businessname@', r'yourdomain@',
+            r'domain@', r'yoursite@', r'info@business\.ng',
+            r'info@business\.com', r'user@', r'admin@site\.com'
         ]
         
-        for pattern in spam_patterns:
+        for pattern in fake_patterns:
             if re.search(pattern, email):
                 return False
         
+        # Filter out emails that look too generic (e.g., info@company.com where name is unknown)
+        if email.split('@')[0] in ['info', 'contact', 'support', 'sales', 'hello', 'mail'] and len(email.split('@')[1].split('.')[0]) < 3:
+            return False
+
         return True
     
     @staticmethod
@@ -170,8 +177,10 @@ class PhoneNumberStandardizer:
         
         # Patterns for Nigerian phone numbers
         patterns = [
-            r'(?:\+234|0)[0-9]{10}',  # +234XXXXXXXXXX or 0XXXXXXXXXXX
-            r'[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{4}',  # XXX-XXX-XXXX format
+            r'(?:\+234|0)[789][01]\d{8}',  # Standard 11-digit or +234
+            r'(?:\+234|0)[789][01]\d\s\d{3}\s\d{4}',  # 0803 123 4567
+            r'(?:\+234|0)[789][01]\d-\d{3}-\d{4}',  # 0803-123-4567
+            r'[789][01]\d{8}',  # 10-digit (missing leading zero)
         ]
         
         phones = []
@@ -290,6 +299,15 @@ class DataCleaner:
         cleaned['industry'] = record.get('industry', '')
         cleaned['finder_type'] = record.get('finder_type', '')
         
+        # Combine all text for aggressive contact extraction
+        all_text = " ".join([
+            str(record.get('address', '') or ''),
+            str(record.get('description', '') or ''),
+            str(record.get('snippet', '') or ''),
+            str(record.get('bio', '') or ''),
+            str(record.get('about', '') or '')
+        ])
+        
         # Address
         original_address = record.get('address', '')
         cleaned['address'] = AddressStandardizer.standardize(original_address)
@@ -308,53 +326,41 @@ class DataCleaner:
             if coords:
                 cleaned['latitude'], cleaned['longitude'] = coords
         
-        # Phone numbers - extract all and standardize
+        # Phone numbers - Scan primary field + all text
         phones = []
-        if 'phone' in record:
-            phone_str = record['phone']
-            if isinstance(phone_str, list):
-                for p in phone_str:
-                    standardized = PhoneNumberStandardizer.standardize(p)
-                    if standardized:
-                        phones.append(standardized)
+        if 'phone' in record and record['phone']:
+            if isinstance(record['phone'], list):
+                for p in record['phone']:
+                    std = PhoneNumberStandardizer.standardize(str(p))
+                    if std: phones.append(std)
             else:
-                extracted = PhoneNumberStandardizer.extract_all_from_text(phone_str)
-                phones.extend(extracted)
+                phones.extend(PhoneNumberStandardizer.extract_all_from_text(str(record['phone'])))
+        
+        # Fallback: Extract from all text fields
+        phones.extend(PhoneNumberStandardizer.extract_all_from_text(all_text))
         
         cleaned['phones'] = list(set(phones))  # Remove duplicates
         cleaned['primary_phone'] = cleaned['phones'][0] if cleaned['phones'] else None
         
-        # WhatsApp (crucial for Nigerian context)
+        # WhatsApp
         cleaned['whatsapp'] = record.get('whatsapp')
         if not cleaned['whatsapp'] and cleaned['primary_phone']:
-            # Assume primary phone can be WhatsApp if not specified
             cleaned['whatsapp_possible'] = True
         
-        # Emails - extract and validate
+        # Emails - Scan primary fields + all text
         emails = []
         
-        # Check 'emails' field (list) from scrapers
-        if 'emails' in record and isinstance(record['emails'], list):
-            for e in record['emails']:
-                if e and EmailExtractor.is_valid_email(e):
-                    emails.append(e.lower())
+        # 1. Check primary list/string
+        for key in ['emails', 'email']:
+            val = record.get(key)
+            if val:
+                if isinstance(val, list):
+                    emails.extend([e.lower() for e in val if EmailExtractor.is_valid_email(str(e))])
+                else:
+                    emails.extend(EmailExtractor.extract_all_from_text(str(val)))
         
-        # Also check 'email' field (singular/string)
-        if 'email' in record:
-            email_str = record['email']
-            if isinstance(email_str, list):
-                for e in email_str:
-                    if EmailExtractor.is_valid_email(e):
-                        emails.append(e.lower())
-            else:
-                extracted = EmailExtractor.extract_all_from_text(email_str)
-                emails.extend(extracted)
-        
-        # Also extract emails from text fields (if combined contact info)
-        for field in ['description', 'bio', 'about']:
-            if field in record:
-                extracted = EmailExtractor.extract_all_from_text(record[field])
-                emails.extend(extracted)
+        # 2. Extract from all text fields
+        emails.extend(EmailExtractor.extract_all_from_text(all_text))
         
         cleaned['emails'] = list(set(emails))  # Remove duplicates
         cleaned['primary_email'] = next(

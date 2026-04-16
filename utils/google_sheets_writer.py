@@ -265,11 +265,11 @@ class GoogleSheetsIntegration:
     
     def __init__(self):
         """Initialize from environment variables."""
-        sheet_id = os.getenv('SHEET_ID')
+        sheet_id = os.getenv('GOOGLE_SHEET_ID') or os.getenv('SHEET_ID')
         creds_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS', './secure_keys/my-service-account.json')
         
         if not sheet_id:
-            raise ValueError("SHEET_ID not set in .env")
+            raise ValueError("Neither GOOGLE_SHEET_ID nor SHEET_ID set in .env")
         
         self.writer = GoogleSheetsWriter(sheet_id, creds_path)
     
